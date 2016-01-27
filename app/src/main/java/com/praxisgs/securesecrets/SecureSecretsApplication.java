@@ -12,6 +12,6 @@ public class SecureSecretsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-       // SecureSecretsDrive.initialise(this);
+
     }
 }
