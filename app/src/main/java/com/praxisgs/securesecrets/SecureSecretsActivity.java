@@ -38,6 +38,38 @@ public class SecureSecretsActivity extends BaseActivity {
                 //disconnectToGoogleDrive();
             }
         });
+
+        Button createFile = (Button) findViewById(R.id.driveCreateFileBtn);
+        createFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SecureSecretsDrive.getInstance().createFile();
+            }
+        });
+
+        Button readFile = (Button) findViewById(R.id.driveReadFileBtn);
+        readFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SecureSecretsDrive.getInstance().readFile();
+            }
+        });
+
+        Button writeFile = (Button) findViewById(R.id.driveWriteFileBtn);
+        writeFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SecureSecretsDrive.getInstance().writeFile();
+            }
+        });
+
+        Button deleteFile = (Button)findViewById(R.id.driveDeleteFileBtn);
+        deleteFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SecureSecretsDrive.getInstance().deleteFile();
+            }
+        });
     }
 
 
