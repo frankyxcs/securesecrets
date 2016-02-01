@@ -135,11 +135,11 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         Drive.DriveApi.newDriveContents(mDriveClient).setResultCallback(driverContentsCallback);
     }
 
-    public void readFile() {
+    public void readFileFromDrive() {
 
     }
 
-    public void writeFile() {
+    public void writeFileToDrive() {
 
     }
 

@@ -6,4 +6,5 @@ package utils;
 public class Constants {
     public static final String DATA_FILE_NAME = "SecureSecrets.txt";
     public static final String DATA_FILE_NAME_MIME = "text/plain";
+    public static final String SHARE_PREF_NAME = "SecureSecretsModel";
 }

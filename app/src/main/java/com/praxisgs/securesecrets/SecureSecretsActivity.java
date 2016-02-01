@@ -51,7 +51,7 @@ public class SecureSecretsActivity extends BaseActivity {
         readFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SecureSecretsDrive.getInstance().readFile();
+                SecureSecretsDrive.getInstance().readFileFromDrive();
             }
         });
 
@@ -59,7 +59,7 @@ public class SecureSecretsActivity extends BaseActivity {
         writeFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SecureSecretsDrive.getInstance().writeFile();
+                SecureSecretsDrive.getInstance().writeFileToDrive();
             }
         });
 
