@@ -21,7 +21,7 @@ import com.google.android.gms.drive.MetadataChangeSet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
+import java.io.OutputStream;
 
 import model.SecureSecretsModel;
 import utils.Constants;
@@ -35,6 +35,7 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
     private GoogleApiClient mDriveClient;
     public static final int REQUEST_CODE_RESOLUTION = 3;
     private DriveId mDriveId;
+    private String dataToWrite;
 
     final private ResultCallback<DriveApi.DriveContentsResult> createContentCallback = new ResultCallback<DriveApi.DriveContentsResult>() {
         @Override
@@ -85,6 +86,18 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         }
     };
 
+    final private ResultCallback<Status> fileUpdatedCallback = new ResultCallback<Status>() {
+        @Override
+        public void onResult(Status result) {
+            if (result.getStatus().isSuccess()) {
+                Toast.makeText(activity, "File Updated Successfully...", Toast.LENGTH_LONG).show();
+//                mDriveId = null;
+            } else {
+                Toast.makeText(activity, "Could not updated File", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
     final private ResultCallback<DriveApi.DriveContentsResult> readContentOpenedCallBack = new ResultCallback<DriveApi.DriveContentsResult>() {
         @Override
         public void onResult(DriveApi.DriveContentsResult results) {
@@ -96,12 +109,12 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
             DriveContents driverContents = results.getDriveContents();
             BufferedReader reader = new BufferedReader(new InputStreamReader(driverContents.getInputStream()));
             StringBuilder builder = new StringBuilder();
-            String data ;
-            try{
+            String data;
+            try {
                 while ((data = reader.readLine()) != null) {
                     builder.append(data);
                 }
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
 
             }
@@ -111,6 +124,29 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
 
         }
     };
+
+
+    final private ResultCallback<DriveApi.DriveContentsResult> writeContentOpenedCallBack = new ResultCallback<DriveApi.DriveContentsResult>() {
+        @Override
+        public void onResult(DriveApi.DriveContentsResult results) {
+            if (!results.getStatus().isSuccess()) {
+                Toast.makeText(activity, "Could not Open File Content", Toast.LENGTH_LONG).show();
+                return;
+            }
+            try {
+                DriveContents driverContents = results.getDriveContents();
+                OutputStream outputStream = driverContents.getOutputStream();
+                outputStream.write(dataToWrite.getBytes());
+                PendingResult<Status> status = driverContents.commit(mDriveClient, null);
+                status.setResultCallback(fileUpdatedCallback);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    };
+
 
     private SecureSecretsDrive(Activity activity) {
         this.activity = activity;
@@ -171,7 +207,6 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
     }
 
     public void readFileFromDrive() {
-//TODO read file from Drive silently
         if (mDriveId == null) {
             Toast.makeText(activity, "Create the file first in Drive...", Toast.LENGTH_LONG).show();
         } else {
@@ -181,8 +216,15 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         }
     }
 
-    public void writeFileToDrive() {
-//TODO Write file to Drive silently.
+    public void writeFileToDrive(String dataToWrite) {
+        if (mDriveId == null) {
+            Toast.makeText(activity, "Create the file first in Drive...", Toast.LENGTH_LONG).show();
+        } else {
+            this.dataToWrite = dataToWrite;
+            DriveFile driveFile = mDriveId.asDriveFile();
+            driveFile.open(mDriveClient, DriveFile.MODE_WRITE_ONLY, null)
+                    .setResultCallback(writeContentOpenedCallBack);
+        }
     }
 
     public void deleteFile() {
