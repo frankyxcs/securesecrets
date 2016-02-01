@@ -49,4 +49,10 @@ public class SecureSecretsModel {
 
         }
     }
+
+    public static void loadNewData(String model) {
+        if(model!=null){
+            loadNewData(model);
+        }
+    }
 }
