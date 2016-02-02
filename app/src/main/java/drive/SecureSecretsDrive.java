@@ -120,7 +120,7 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
             }
 
             String contentString = builder.toString();
-            SecureSecretsModel.loadNewData(contentString);
+            SecureSecretsModel.getInstance().loadNewData(contentString);
 
         }
     };

@@ -10,7 +10,7 @@ import com.google.gson.annotations.Expose;
 import utils.Constants;
 
 /**
- * Created by British Gas on 01/02/2016.
+ * Created on 01/02/2016.
  */
 public class SecureSecretsModel {
     private static SecureSecretsModel instance;
@@ -50,17 +50,26 @@ public class SecureSecretsModel {
         setData(loadedModelString);
     }
 
-    private void setData(String model) {
-        if (model != null) {
-
+    private void setData(String modelStr) {
+        if (modelStr != null) {
+            SecureSecretsModel model = gson.fromJson(modelStr, SecureSecretsModel.class);
+            setRecords(model.getRecords());
+            setPasscode(model.getPasscode());
         }
     }
 
-    public static void loadNewData(String model) {
-        if (model != null) {
-            loadNewData(model);
+    public void clearAndResetData() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARE_PREF_NAME, Context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().apply();
+    }
+
+    public void loadNewData(String modelStr) {
+        if (modelStr != null) {
+            setData(modelStr);
         }
     }
+
+
 
     public Records getRecords() {
         return records;
