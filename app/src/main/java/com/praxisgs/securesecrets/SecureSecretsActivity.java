@@ -8,6 +8,7 @@ import com.praxisgs.securesecrets.base.BaseActivity;
 
 import drive.SecureSecretsDrive;
 import model.SecureSecretsModel;
+import model.TestData;
 
 public class SecureSecretsActivity extends BaseActivity {
 
@@ -60,7 +61,7 @@ public class SecureSecretsActivity extends BaseActivity {
         writeFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String modelStr = SecureSecretsModel.getInstance().getRecords().toString();
+                String modelStr = new TestData().getData().toString();
                 SecureSecretsDrive.getInstance().writeFileToDrive(modelStr);
             }
         });

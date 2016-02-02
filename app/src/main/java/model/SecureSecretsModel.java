@@ -24,8 +24,9 @@ public class SecureSecretsModel {
     private Passcode passcode;
 
     public static void initialise(Context context) {
-        if (instance == null)
+        if (instance == null){
             instance = new SecureSecretsModel(context);
+        }
     }
 
     public static SecureSecretsModel getInstance() {
@@ -86,4 +87,5 @@ public class SecureSecretsModel {
     public void setPasscode(Passcode passcode) {
         this.passcode = passcode;
     }
+
 }
