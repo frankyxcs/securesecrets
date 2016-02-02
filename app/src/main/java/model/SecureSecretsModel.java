@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import utils.Constants;
 
@@ -17,8 +18,13 @@ public class SecureSecretsModel {
     private final Gson gson;
     private final Context context;
 
-    public static void initialise(Context context){
-        if(instance == null)
+    @Expose
+    private Records records;
+    @Expose
+    private Passcode passcode;
+
+    public static void initialise(Context context) {
+        if (instance == null)
             instance = new SecureSecretsModel(context);
     }
 
@@ -32,7 +38,7 @@ public class SecureSecretsModel {
         load();
     }
 
-    private void save(){
+    private void save() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARE_PREF_NAME, Context.MODE_PRIVATE);
         String modelAsString = gson.toJson(instance);
         sharedPreferences.edit().putString(Constants.SHARE_PREF_NAME, modelAsString).apply();
@@ -44,15 +50,31 @@ public class SecureSecretsModel {
         setData(loadedModelString);
     }
 
-    private void setData(String model){
-        if(model !=null){
+    private void setData(String model) {
+        if (model != null) {
 
         }
     }
 
     public static void loadNewData(String model) {
-        if(model!=null){
+        if (model != null) {
             loadNewData(model);
         }
+    }
+
+    public Records getRecords() {
+        return records;
+    }
+
+    public void setRecords(Records records) {
+        this.records = records;
+    }
+
+    public Passcode getPasscode() {
+        return passcode;
+    }
+
+    public void setPasscode(Passcode passcode) {
+        this.passcode = passcode;
     }
 }
