@@ -2,15 +2,22 @@ package com.praxisgs.securesecrets.base;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
+import com.praxisgs.securesecrets.R;
 
 import drive.SecureSecretsDrive;
 
 public class BaseActivity extends AppCompatActivity {
 
+    private Fragment newInstance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_base_activity);
     }
 
     @Override
@@ -29,5 +36,18 @@ public class BaseActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    public void showFragment(String fragmentTag, Bundle bundle, String title) {
+
+        if (newInstance != null && newInstance.getTag() != null && newInstance.getTag().equals(fragmentTag)) {
+            return;
+        }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        newInstance = Fragment.instantiate(this, fragmentTag, bundle);
+        ft.replace(R.id.fragment_container, newInstance);
+        ft.commit();
     }
 }

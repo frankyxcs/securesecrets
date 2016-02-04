@@ -1,16 +1,18 @@
-package com.praxisgs.securesecrets;
+package com.praxisgs.securesecrets.base;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.praxisgs.securesecrets.base.BaseActivity;
+import com.praxisgs.securesecrets.R;
+import com.praxisgs.securesecrets.controllers.AppNavigationController;
+import com.praxisgs.securesecrets.controllers.AppNavigationControllerInterface;
 
 import drive.SecureSecretsDrive;
-import model.SecureSecretsModel;
 import model.TestData;
+import utils.AppNavigationEnum;
 
-public class SecureSecretsActivity extends BaseActivity {
+public class SecureSecretsActivity extends BaseActivity implements AppNavigationControllerInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,18 @@ public class SecureSecretsActivity extends BaseActivity {
         setContentView(R.layout.activity_secure_secrets);
         bindView();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initialiseControllers();
+    }
+
+
+    private void initialiseControllers() {
+        AppNavigationController.initialise(this);
+    }
+
 
     private void bindView() {
 
@@ -66,7 +80,7 @@ public class SecureSecretsActivity extends BaseActivity {
             }
         });
 
-        Button deleteFile = (Button)findViewById(R.id.driveDeleteFileBtn);
+        Button deleteFile = (Button) findViewById(R.id.driveDeleteFileBtn);
         deleteFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,4 +90,11 @@ public class SecureSecretsActivity extends BaseActivity {
     }
 
 
+    /**
+     * Show the Categories page
+     */
+    @Override
+    public void showCategories() {
+        showFragment(AppNavigationEnum.CATEGORIES.getFragmentTag(), null, AppNavigationEnum.CATEGORIES.getTitle());
+    }
 }
