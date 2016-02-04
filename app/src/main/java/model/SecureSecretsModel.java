@@ -66,7 +66,7 @@ public class SecureSecretsModel {
 
     public void loadNewData(String modelStr) {
         if (modelStr != null) {
-            setData(modelStr);
+            setRecords(gson.fromJson(modelStr, Records.class));
         }
     }
 

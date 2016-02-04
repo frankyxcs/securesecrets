@@ -37,6 +37,7 @@ public class TestData {
             tempRecord.setAdditionalRecordList(addtionalRecordList);
             recordList.add(tempRecord);
         }
+        data = new Records();
         data.setRecords(recordList);
 
     }

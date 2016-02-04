@@ -3,6 +3,7 @@ package drive;
 import android.app.Activity;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -16,7 +17,12 @@ import com.google.android.gms.drive.DriveContents;
 import com.google.android.gms.drive.DriveFile;
 import com.google.android.gms.drive.DriveFolder;
 import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.Metadata;
+import com.google.android.gms.drive.MetadataBuffer;
 import com.google.android.gms.drive.MetadataChangeSet;
+import com.google.android.gms.drive.query.Filters;
+import com.google.android.gms.drive.query.Query;
+import com.google.android.gms.drive.query.SearchableField;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,9 +33,10 @@ import model.SecureSecretsModel;
 import utils.Constants;
 
 /**
- * Created by British Gas on 26/01/2016.
+ * Created on 26/01/2016.
  */
 public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private final String TAG = SecureSecretsDrive.class.getName();
     private static SecureSecretsDrive instance;
     private Activity activity;
     private GoogleApiClient mDriveClient;
@@ -64,13 +71,13 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         @Override
         public void onResult(DriveFolder.DriveFileResult result) {
             if (!result.getStatus().isSuccess()) {
-                Toast.makeText(activity, "Error while creating a file on Drive...", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Error: " + result.getStatus().getStatusMessage().toString(), Toast.LENGTH_LONG).show();
                 return;
             }
 
             mDriveId = result.getDriveFile().getDriveId();
 
-            Toast.makeText(activity, "Created a file  in App Folder: " + result.getDriveFile().getDriveId(), Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Created a file in App Folder: " + result.getDriveFile().getDriveId(), Toast.LENGTH_LONG).show();
         }
     };
 
@@ -120,8 +127,28 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
             }
 
             String contentString = builder.toString();
+            Log.d(TAG, "@@@@@@@@@@@@ Read String: " + contentString);
             SecureSecretsModel.getInstance().loadNewData(contentString);
 
+        }
+    };
+
+
+    final private ResultCallback<DriveApi.MetadataBufferResult> queryResultCallback = new ResultCallback<DriveApi.MetadataBufferResult>() {
+        @Override
+        public void onResult(DriveApi.MetadataBufferResult results) {
+            if (!results.getStatus().isSuccess()) {
+                Toast.makeText(activity, "Could not get Meta Data", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            MetadataBuffer metaBuffer = results.getMetadataBuffer();
+            if (metaBuffer.getCount() > 0) {
+                Metadata metaData = metaBuffer.get(0);
+                mDriveId = metaData.getDriveId();
+            } else {
+                createFileOnDrive();
+            }
         }
     };
 
@@ -203,6 +230,12 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
     }
 
     public void createFile() {
+        //get the relevant id for the file using a query
+        getFileId(Constants.DATA_FILE_NAME);
+        // Drive.DriveApi.newDriveContents(mDriveClient).setResultCallback(createContentCallback);
+    }
+
+    public void createFileOnDrive() {
         Drive.DriveApi.newDriveContents(mDriveClient).setResultCallback(createContentCallback);
     }
 
@@ -220,6 +253,8 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         if (mDriveId == null) {
             Toast.makeText(activity, "Create the file first in Drive...", Toast.LENGTH_LONG).show();
         } else {
+            //get the relevant id for the file using a query
+            getFileId(Constants.DATA_FILE_NAME);
             this.dataToWrite = dataToWrite;
             DriveFile driveFile = mDriveId.asDriveFile();
             driveFile.open(mDriveClient, DriveFile.MODE_WRITE_ONLY, null)
@@ -227,10 +262,18 @@ public class SecureSecretsDrive implements GoogleApiClient.ConnectionCallbacks, 
         }
     }
 
+    private void getFileId(String dataFileName) {
+        Query query = new Query.Builder()
+                .addFilter(Filters.eq(SearchableField.TITLE, dataFileName)).build();
+        Drive.DriveApi.query(mDriveClient, query).setResultCallback(queryResultCallback);
+    }
+
     public void deleteFile() {
-        DriveFile fileToDelete = mDriveId.asDriveFile();
-        PendingResult<Status> status = fileToDelete.delete(mDriveClient);
-        status.setResultCallback(fileDeleteCallback);
+        if (mDriveId != null) {
+            DriveFile fileToDelete = mDriveId.asDriveFile();
+            PendingResult<Status> status = fileToDelete.delete(mDriveClient);
+            status.setResultCallback(fileDeleteCallback);
+        }
 
     }
 
