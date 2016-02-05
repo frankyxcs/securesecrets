@@ -19,9 +19,9 @@ public class SecureSecretsModel {
     private final Context context;
 
     @Expose
-    private Records records;
+    private RecordsEntity recordsEntity;
     @Expose
-    private Passcode passcode;
+    private PassCodeEntity passCodeEntity;
 
     public static void initialise(Context context) {
         if (instance == null){
@@ -54,8 +54,8 @@ public class SecureSecretsModel {
     private void setData(String modelStr) {
         if (modelStr != null) {
             SecureSecretsModel model = gson.fromJson(modelStr, SecureSecretsModel.class);
-            setRecords(model.getRecords());
-            setPasscode(model.getPasscode());
+            setRecordsEntity(model.getRecordsEntity());
+            setPassCodeEntity(model.getPassCodeEntity());
         }
     }
 
@@ -66,26 +66,26 @@ public class SecureSecretsModel {
 
     public void loadNewData(String modelStr) {
         if (modelStr != null) {
-            setRecords(gson.fromJson(modelStr, Records.class));
+            setRecordsEntity(gson.fromJson(modelStr, RecordsEntity.class));
         }
     }
 
 
 
-    public Records getRecords() {
-        return records;
+    public RecordsEntity getRecordsEntity() {
+        return recordsEntity;
     }
 
-    public void setRecords(Records records) {
-        this.records = records;
+    public void setRecordsEntity(RecordsEntity recordsEntity) {
+        this.recordsEntity = recordsEntity;
     }
 
-    public Passcode getPasscode() {
-        return passcode;
+    public PassCodeEntity getPassCodeEntity() {
+        return passCodeEntity;
     }
 
-    public void setPasscode(Passcode passcode) {
-        this.passcode = passcode;
+    public void setPassCodeEntity(PassCodeEntity passCodeEntity) {
+        this.passCodeEntity = passCodeEntity;
     }
 
 }

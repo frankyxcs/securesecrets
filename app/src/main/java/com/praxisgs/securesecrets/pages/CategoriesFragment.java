@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.base.BaseFragment;
@@ -27,6 +28,7 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
     }
 
     private void bindView(View view) {
-
+        ListView categories_listview = (ListView) view.findViewById(R.id.categories_listview);
+        mPresenter.getCategories();
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created on 02/02/2016.
  */
-public class Records {
+public class RecordsEntity {
 
     @Expose
     private List<Record> records = new ArrayList<>();

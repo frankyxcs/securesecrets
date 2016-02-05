@@ -7,16 +7,16 @@ import java.util.List;
  * Created on 02/02/2016.
  */
 public class TestData {
-    private Records data;
+    private RecordsEntity data;
 
     public TestData() {
         createData();
     }
 
     private void createData() {
-        List<Records.Record> recordList = new ArrayList<>();
+        List<RecordsEntity.Record> recordList = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            Records.Record tempRecord = new Records.Record();
+            RecordsEntity.Record tempRecord = new RecordsEntity.Record();
             tempRecord.setTitle("Title " + i);
             tempRecord.setUserName("Username " + i);
             tempRecord.setPassword("Password " + i);
@@ -25,10 +25,10 @@ public class TestData {
                 tempRecord.setCategory("category 1");
             else
                 tempRecord.setCategory("category 2");
-            List<Records.AdditionalRecord> addtionalRecordList = new ArrayList<>();
+            List<RecordsEntity.AdditionalRecord> addtionalRecordList = new ArrayList<>();
 
             for(int j=1;j<3;j++){
-                Records.AdditionalRecord tempAdditionalRecord = new Records.AdditionalRecord();
+                RecordsEntity.AdditionalRecord tempAdditionalRecord = new RecordsEntity.AdditionalRecord();
                 tempAdditionalRecord.setAddtionalRecordTitle("Addtional Info: "+j);
                 tempAdditionalRecord.setAdddtionalRecordPassword("Addtional Password: " + j);
                 addtionalRecordList.add(tempAdditionalRecord);
@@ -37,12 +37,12 @@ public class TestData {
             tempRecord.setAdditionalRecordList(addtionalRecordList);
             recordList.add(tempRecord);
         }
-        data = new Records();
+        data = new RecordsEntity();
         data.setRecords(recordList);
 
     }
 
-    public Records getData() {
+    public RecordsEntity getData() {
         return data;
     }
 }

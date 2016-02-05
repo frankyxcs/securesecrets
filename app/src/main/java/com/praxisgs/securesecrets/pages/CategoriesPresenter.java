@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 import com.praxisgs.securesecrets.base.BasePresenter;
 
+import java.util.List;
+
+import utils.SecureSecretsModelUtils;
+
 /**
  * Created on 04/02/2016.
  */
@@ -61,6 +65,9 @@ public class CategoriesPresenter implements BasePresenter {
         return mView.getAppContext();
     }
 
+    public List<String> getCategories() {
+        return SecureSecretsModelUtils.getCategories();
+    }
 
 
 }
