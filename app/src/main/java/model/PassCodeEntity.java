@@ -7,5 +7,13 @@ import com.google.gson.annotations.Expose;
  */
 public class PassCodeEntity {
     @Expose
-    private String passcode;
+    private String passCode;
+
+    public String getPassCode() {
+        return passCode;
+    }
+
+    public void setPassCode(String passCode) {
+        this.passCode = passCode;
+    }
 }
