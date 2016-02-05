@@ -17,12 +17,15 @@ public class SecureSecretsModelUtils {
 
     private static List<String> getCategories(RecordsEntity recordsEntity) {
         List<String> categories = new ArrayList();
-        List<RecordsEntity.Record> recordList = recordsEntity.getRecords();
-        for (RecordsEntity.Record record : recordList) {
-            String category = record.getCategory();
-            if (!categories.contains(category))
-                categories.add(category);
+        if(recordsEntity !=null && recordsEntity.getRecords() !=null){
+            List<RecordsEntity.Record> recordList = recordsEntity.getRecords();
+            for (RecordsEntity.Record record : recordList) {
+                String category = record.getCategory();
+                if (!categories.contains(category))
+                    categories.add(category);
+            }
         }
+
         return categories;
     }
 }

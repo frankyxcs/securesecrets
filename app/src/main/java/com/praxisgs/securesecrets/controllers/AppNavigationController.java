@@ -23,7 +23,11 @@ public class AppNavigationController {
     }
 
     public void onEvent(AppNavigationEvents.EventShowCategoriesPage event) {
-        implementer.showCategories();
+        implementer.showCategoriesPage();
+    }
+
+    public void onEvent(AppNavigationEvents.EventShowPassCodePage event) {
+        implementer.showPassCodePage();
     }
 
 }

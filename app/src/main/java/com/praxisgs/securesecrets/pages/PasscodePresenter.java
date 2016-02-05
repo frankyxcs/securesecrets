@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import com.praxisgs.securesecrets.base.BasePresenter;
 
+import eventbus.AppNavigationEvents;
+import eventbus.SecureSecretsEventBus;
 import model.PassCodeEntity;
 import model.SecureSecretsModel;
 
@@ -36,7 +38,7 @@ public class PasscodePresenter implements BasePresenter {
         if(passCodeEntity !=null && passCodeEntity.getPassCode() !=null && !passCodeEntity.getPassCode().isEmpty()){
             String storedPasscode = passCodeEntity.getPassCode();
             if(passcode.equals(storedPasscode)){
-                //TODO show Categories page
+                SecureSecretsEventBus.post(new AppNavigationEvents.EventShowCategoriesPage());
             }else{
                 //TODO Show error
             }
@@ -46,7 +48,9 @@ public class PasscodePresenter implements BasePresenter {
 
     public void createPassCodeBtnClicked(String createPassCode, String recreatePassCode) {
         if(createPassCode.equals(recreatePassCode)){
-            //TODO store it in Model
+            PassCodeEntity passCodeEntity = new PassCodeEntity();
+            passCodeEntity.setPassCode(createPassCode);
+            SecureSecretsModel.getInstance().setPassCodeEntity(passCodeEntity);
         }else{
             //TODO show Error
         }

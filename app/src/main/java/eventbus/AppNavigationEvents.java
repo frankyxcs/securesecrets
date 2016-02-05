@@ -6,4 +6,5 @@ package eventbus;
 public class AppNavigationEvents {
 
     public static class EventShowCategoriesPage{}
+    public static class EventShowPassCodePage{}
 }

@@ -6,10 +6,15 @@ package com.praxisgs.securesecrets.controllers;
 public interface AppNavigationControllerInterface {
 
     /**
+     * Show PassCode Page
+     */
+    void showPassCodePage();
+
+    /**
      * Show the Categories page
      */
 
-    void showCategories();
+    void showCategoriesPage();
 
 
 }

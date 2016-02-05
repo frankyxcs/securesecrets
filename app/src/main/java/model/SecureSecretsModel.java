@@ -78,6 +78,7 @@ public class SecureSecretsModel {
 
     public void setRecordsEntity(RecordsEntity recordsEntity) {
         this.recordsEntity = recordsEntity;
+        save();
     }
 
     public PassCodeEntity getPassCodeEntity() {
@@ -86,6 +87,7 @@ public class SecureSecretsModel {
 
     public void setPassCodeEntity(PassCodeEntity passCodeEntity) {
         this.passCodeEntity = passCodeEntity;
+        save();
     }
 
 }

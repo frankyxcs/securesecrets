@@ -32,7 +32,7 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
     @Override
     protected void onResume() {
         super.onResume();
-        showCategories();
+        showPassCodePage();
     }
 
     private void initialiseControllers() {
@@ -96,10 +96,20 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
 
 
     /**
+     * Show PassCode Page
+     */
+    @Override
+    public void showPassCodePage() {
+        showFragment(AppNavigationEnum.PASSCODE.getFragmentTag(),null,AppNavigationEnum.PASSCODE.getTitle());
+    }
+
+    /**
      * Show the Categories page
      */
     @Override
-    public void showCategories() {
+    public void showCategoriesPage() {
         showFragment(AppNavigationEnum.CATEGORIES.getFragmentTag(), null, AppNavigationEnum.CATEGORIES.getTitle());
     }
+
+
 }
