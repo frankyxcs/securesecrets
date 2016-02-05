@@ -5,6 +5,7 @@ import android.app.Application;
 import com.praxisgs.securesecrets.controllers.AppNavigationController;
 
 import drive.SecureSecretsDrive;
+import eventbus.SecureSecretsEventBus;
 import model.SecureSecretsModel;
 
 /**
@@ -16,5 +17,6 @@ public class SecureSecretsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         SecureSecretsModel.initialise(this);
+        SecureSecretsEventBus.initialise();
     }
 }

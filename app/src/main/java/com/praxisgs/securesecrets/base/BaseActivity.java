@@ -1,9 +1,8 @@
 package com.praxisgs.securesecrets.base;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.praxisgs.securesecrets.R;
@@ -44,8 +43,8 @@ public class BaseActivity extends AppCompatActivity {
             return;
         }
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         newInstance = Fragment.instantiate(this, fragmentTag, bundle);
         ft.replace(R.id.fragment_container, newInstance);
         ft.commit();

@@ -6,4 +6,8 @@
     <string name="read_file">Read File</string>
     <string name="write_file">Write File</string>
     <string name="delete_file">Delete File</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
