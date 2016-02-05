@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose;
 /**
  * Created on 02/02/2016.
  */
-public class Passcode {
+public class SPasscode {
     @Expose
     private String passcode;
 }
