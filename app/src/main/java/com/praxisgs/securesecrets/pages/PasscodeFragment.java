@@ -21,6 +21,8 @@ import com.praxisgs.securesecrets.base.BaseFragment;
  */
 public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements PasscodePresenter.ViewInterface {
     public static final String TAG = PasscodeFragment.class.getName();
+    private LinearLayout enterPassCodeLayout;
+    private LinearLayout createPassCodeLayout;
 
 
     @Override
@@ -37,15 +39,11 @@ public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements
     }
 
     private void bindView(View view) {
-        LinearLayout enterPassCodeLayout = (LinearLayout) view.findViewById(R.id.passcode_enterPassCode_layout);
-        LinearLayout createPassCodeLayout = (LinearLayout) view.findViewById(R.id.passcode_createPassCode_layout);
-        if (mPresenter.isPassCodeCreated()) {
-            enterPassCodeLayout.setVisibility(View.VISIBLE);
-            createPassCodeLayout.setVisibility(View.GONE);
-        } else {
-            enterPassCodeLayout.setVisibility(View.GONE);
-            createPassCodeLayout.setVisibility(View.VISIBLE);
-        }
+        enterPassCodeLayout = (LinearLayout) view.findViewById(R.id.passcode_enterPassCode_layout);
+        createPassCodeLayout = (LinearLayout) view.findViewById(R.id.passcode_createPassCode_layout);
+        showRequiredLayout();
+
+
 
         final EditText enterPassCode = (EditText) view.findViewById(R.id.passcode_enterPassCode);
         enterPassCode.addTextChangedListener(new TextWatcher() {
@@ -111,13 +109,27 @@ public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements
         createPassCodeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(createPassCode.getText().toString().isEmpty() && recreatePassCode.getText().toString().isEmpty())){
-                    mPresenter.createPassCodeBtnClicked(createPassCode.getText().toString(),recreatePassCode.getText().toString());
+                if (!(createPassCode.getText().toString().isEmpty() && recreatePassCode.getText().toString().isEmpty())) {
+                    mPresenter.createPassCodeBtnClicked(createPassCode.getText().toString(), recreatePassCode.getText().toString());
                 }
             }
         });
 
     }
 
+    private void showRequiredLayout() {
+        if (mPresenter.isPassCodeCreated()) {
+            enterPassCodeLayout.setVisibility(View.VISIBLE);
+            createPassCodeLayout.setVisibility(View.GONE);
+        } else {
+            enterPassCodeLayout.setVisibility(View.GONE);
+            createPassCodeLayout.setVisibility(View.VISIBLE);
+        }
+    }
 
+
+    @Override
+    public void passCodeCreate() {
+        showRequiredLayout();
+    }
 }
