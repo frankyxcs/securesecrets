@@ -14,6 +14,8 @@ import utils.AppNavigationEnum;
 
 public class SecureSecretsActivity extends BaseActivity implements AppNavigationControllerInterface {
 
+    private AppNavigationController appNavigationController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,14 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
         showPassCodePage();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        appNavigationController.destroy();
+    }
+
     private void initialiseControllers() {
-        AppNavigationController.initialise(this);
+        appNavigationController =   new AppNavigationController(this);
     }
 
 

@@ -4,14 +4,17 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.praxisgs.securesecrets.R;
 
 import drive.SecureSecretsDrive;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class  BaseActivity extends AppCompatActivity {
 
-    private Fragment newInstance;
+    final String TAG = BaseActivity.class.getName();
+
+//    private Fragment newInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +42,13 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showFragment(String fragmentTag, Bundle bundle, String title) {
 
-        if (newInstance != null && newInstance.getTag() != null && newInstance.getTag().equals(fragmentTag)) {
-            return;
-        }
+//        if (newInstance != null && newInstance.getTag() != null && newInstance.getTag().equals(fragmentTag)) {
+//            return;
+//        }
 
         android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 //        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        newInstance = Fragment.instantiate(this, fragmentTag, bundle);
+        Fragment newInstance = Fragment.instantiate(this, fragmentTag, bundle);
         ft.replace(R.id.fragment_container, newInstance);
         ft.commit();
     }

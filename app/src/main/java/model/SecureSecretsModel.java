@@ -47,7 +47,7 @@ public class SecureSecretsModel {
 
     private void load() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARE_PREF_NAME, Context.MODE_PRIVATE);
-        String loadedModelString = sharedPreferences.getString(Constants.SHARE_PREF_NAME, null);
+        String loadedModelString = sharedPreferences.getString(Constants.SHARE_PREF_NAME,null);
         setData(loadedModelString);
     }
 

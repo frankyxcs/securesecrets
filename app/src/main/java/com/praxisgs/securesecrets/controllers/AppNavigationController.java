@@ -9,17 +9,11 @@ import eventbus.SecureSecretsEventBus;
 public class AppNavigationController {
 
     private final String TAG = AppNavigationController.class.getName();
-    private static AppNavigationController instance;
     private final AppNavigationControllerInterface implementer;
 
-    private AppNavigationController(AppNavigationControllerInterface implementer) {
+    public AppNavigationController(AppNavigationControllerInterface implementer) {
         this.implementer = implementer;
         SecureSecretsEventBus.register(this);
-    }
-
-    public static void initialise(AppNavigationControllerInterface implementer) {
-        if (instance == null)
-            instance = new AppNavigationController(implementer);
     }
 
     public void onEvent(AppNavigationEvents.EventShowCategoriesPage event) {
@@ -28,6 +22,10 @@ public class AppNavigationController {
 
     public void onEvent(AppNavigationEvents.EventShowPassCodePage event) {
         implementer.showPassCodePage();
+    }
+
+    public void destroy() {
+        SecureSecretsEventBus.unregister(this);
     }
 
 }
