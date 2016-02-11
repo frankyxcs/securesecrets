@@ -4,8 +4,7 @@ package com.praxisgs.securesecrets.pages;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,22 +43,22 @@ public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements
         showRequiredLayout();
 
 
-
         final EditText enterPassCode = (EditText) view.findViewById(R.id.passcode_enterPassCode);
-        enterPassCode.addTextChangedListener(new TextWatcher() {
+        enterPassCode.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            if (!enterPassCode.getText().toString().isEmpty()) {
+                                mPresenter.passCodeEnterOKBtnClicked(enterPassCode.getText().toString());
+                            }
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
             }
         });
         Button enterPassCodeOKBtn = (Button) view.findViewById(R.id.passcode_enterPassCode_okBtn);
@@ -72,37 +71,22 @@ public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements
         });
 
         final EditText createPassCode = (EditText) view.findViewById(R.id.passcode_createPassCode);
-        createPassCode.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         final EditText recreatePassCode = (EditText) view.findViewById(R.id.passcode__re_createPassCode);
-        recreatePassCode.addTextChangedListener(new TextWatcher() {
+        recreatePassCode.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            if (!(createPassCode.getText().toString().isEmpty() && recreatePassCode.getText().toString().isEmpty())) {
+                                mPresenter.createPassCodeBtnClicked(createPassCode.getText().toString(), recreatePassCode.getText().toString());
+                            }
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
             }
         });
         Button createPassCodeBtn = (Button) view.findViewById(R.id.passcode_enterPassCode_createBtn);

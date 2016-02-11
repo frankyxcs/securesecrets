@@ -24,9 +24,10 @@ public class SecureSecretsModel {
     private PassCodeEntity passCodeEntity;
 
     public static void initialise(Context context) {
-        if (instance == null){
+        if (instance == null) {
             instance = new SecureSecretsModel(context);
         }
+        //instance.load();
     }
 
     public static SecureSecretsModel getInstance() {
@@ -39,7 +40,7 @@ public class SecureSecretsModel {
         load();
     }
 
-    private void save() {
+    public void save() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARE_PREF_NAME, Context.MODE_PRIVATE);
         String modelAsString = gson.toJson(instance);
         sharedPreferences.edit().putString(Constants.SHARE_PREF_NAME, modelAsString).apply();
@@ -47,7 +48,7 @@ public class SecureSecretsModel {
 
     private void load() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARE_PREF_NAME, Context.MODE_PRIVATE);
-        String loadedModelString = sharedPreferences.getString(Constants.SHARE_PREF_NAME,null);
+        String loadedModelString = sharedPreferences.getString(Constants.SHARE_PREF_NAME, null);
         setData(loadedModelString);
     }
 
@@ -71,14 +72,12 @@ public class SecureSecretsModel {
     }
 
 
-
     public RecordsEntity getRecordsEntity() {
         return recordsEntity;
     }
 
     public void setRecordsEntity(RecordsEntity recordsEntity) {
         this.recordsEntity = recordsEntity;
-        save();
     }
 
     public PassCodeEntity getPassCodeEntity() {
@@ -87,7 +86,6 @@ public class SecureSecretsModel {
 
     public void setPassCodeEntity(PassCodeEntity passCodeEntity) {
         this.passCodeEntity = passCodeEntity;
-        save();
     }
 
 }

@@ -1,16 +1,17 @@
 package com.praxisgs.securesecrets.base;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 
 import com.praxisgs.securesecrets.R;
 
 import drive.SecureSecretsDrive;
 
-public abstract class  BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     final String TAG = BaseActivity.class.getName();
 
@@ -40,16 +41,30 @@ public abstract class  BaseActivity extends AppCompatActivity {
         }
     }
 
+    private void hideKeyboard() {
+        try {
+            InputMethodManager im = (InputMethodManager) BaseActivity.this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (im != null) {
+                im.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void showFragment(String fragmentTag, Bundle bundle, String title) {
 
 //        if (newInstance != null && newInstance.getTag() != null && newInstance.getTag().equals(fragmentTag)) {
 //            return;
 //        }
 
+        hideKeyboard();
         android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 //        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         Fragment newInstance = Fragment.instantiate(this, fragmentTag, bundle);
         ft.replace(R.id.fragment_container, newInstance);
         ft.commit();
     }
+
 }
