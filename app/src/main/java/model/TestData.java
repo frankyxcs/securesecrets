@@ -21,15 +21,20 @@ public class TestData {
             tempRecord.setUserName("Username " + i);
             tempRecord.setPassword("Password " + i);
             tempRecord.setWebsite("Website " + i);
-            if (i <= 5)
-                tempRecord.setCategory("category 1");
-            else
-                tempRecord.setCategory("category 2");
+            RecordsEntity.Category category = new RecordsEntity.Category();
+            if (i <= 5) {
+                category.setCategoryName("category 1");
+                category.setId(1);
+            } else {
+                category.setCategoryName("category 2");
+                category.setId(2);
+            }
+            tempRecord.setCategory(category);
             List<RecordsEntity.AdditionalRecord> addtionalRecordList = new ArrayList<>();
 
-            for(int j=1;j<3;j++){
+            for (int j = 1; j < 3; j++) {
                 RecordsEntity.AdditionalRecord tempAdditionalRecord = new RecordsEntity.AdditionalRecord();
-                tempAdditionalRecord.setAddtionalRecordTitle("Addtional Info: "+j);
+                tempAdditionalRecord.setAddtionalRecordTitle("Addtional Info: " + j);
                 tempAdditionalRecord.setAdddtionalRecordPassword("Addtional Password: " + j);
                 addtionalRecordList.add(tempAdditionalRecord);
             }

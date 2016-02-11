@@ -2,6 +2,8 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
+import com.praxisgs.securesecrets.base.BaseActivity;
+import com.praxisgs.securesecrets.base.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,10 @@ public class RecordsEntity {
         return new Gson().toJson(this);
     }
 
-    public static class Record {
+    public static class Record implements BaseEntity {
+
+        @Expose
+        private int id;
         @Expose
         private String title;
         @Expose
@@ -35,7 +40,7 @@ public class RecordsEntity {
         @Expose
         private String password;
         @Expose
-        private String category;
+        private Category category;
         @Expose
         private String website;
         @Expose
@@ -68,11 +73,11 @@ public class RecordsEntity {
             this.password = password;
         }
 
-        public String getCategory() {
+        public Category getCategory() {
             return category;
         }
 
-        public void setCategory(String category) {
+        public void setCategory(Category category) {
             this.category = category;
         }
 
@@ -99,9 +104,36 @@ public class RecordsEntity {
         public void setAdditionalRecordList(List<AdditionalRecord> additionalRecordList) {
             this.additionalRecordList = additionalRecordList;
         }
+
+        @Override
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if(object!=null && object instanceof Record){
+                return this.id == ((Record)object).getId();
+            }
+            return false;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return this.id;
+        }
     }
 
-    public static class AdditionalRecord {
+    public static class AdditionalRecord implements BaseEntity{
+
+        @Expose
+        int id;
+
         @Expose
         private String addtionalRecordTitle;
         @Expose
@@ -121,6 +153,52 @@ public class RecordsEntity {
 
         public void setAdddtionalRecordPassword(String adddtionalRecordPassword) {
             this.adddtionalRecordPassword = adddtionalRecordPassword;
+        }
+
+        @Override
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+    public static class Category implements BaseEntity{
+        @Expose
+        private int id;
+
+        @Expose
+        private String categoryName;
+
+        @Override
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getCategoryName() {
+            return categoryName;
+        }
+
+        public void setCategoryName(String categoryName) {
+            this.categoryName = categoryName;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if((object !=null) && (object instanceof Category)){
+                return (this.id == ((Category)object).getId());
+            }
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return this.id;
         }
     }
 }

@@ -2,6 +2,7 @@ package com.praxisgs.securesecrets.pages;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 
 import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.base.BaseFragment;
+import com.praxisgs.securesecrets.base.BaseListAdapter;
 
 public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implements CategoriesPresenter.ViewInterface {
     public static final String TAG = CategoriesFragment.class.getName();
@@ -29,6 +31,15 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
 
     private void bindView(View view) {
         ListView categories_listview = (ListView) view.findViewById(R.id.categories_listview);
-        mPresenter.getCategories();
+        FloatingActionButton floatingBtn = (FloatingActionButton) view.findViewById(R.id.categories_floatingBtn);
+        floatingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.floatingBtnClicked();
+            }
+        });
+        BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), android.R.layout.simple_list_item_1, mPresenter.getCategories());
+        categories_listview.setAdapter(listAdapter);
+
     }
 }

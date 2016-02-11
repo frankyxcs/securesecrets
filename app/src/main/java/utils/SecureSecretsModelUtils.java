@@ -1,5 +1,7 @@
 package utils;
 
+import com.praxisgs.securesecrets.base.BaseEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,16 +13,16 @@ import model.SecureSecretsModel;
  */
 public class SecureSecretsModelUtils {
 
-    public static List<String> getCategories() {
+    public static List<BaseEntity> getCategories() {
         return getCategories(SecureSecretsModel.getInstance().getRecordsEntity());
     }
 
-    private static List<String> getCategories(RecordsEntity recordsEntity) {
-        List<String> categories = new ArrayList();
+    private static List<BaseEntity> getCategories(RecordsEntity recordsEntity) {
+        List<BaseEntity> categories = new ArrayList();
         if(recordsEntity !=null && recordsEntity.getRecords() !=null){
             List<RecordsEntity.Record> recordList = recordsEntity.getRecords();
             for (RecordsEntity.Record record : recordList) {
-                String category = record.getCategory();
+                RecordsEntity.Category category = record.getCategory();
                 if (!categories.contains(category))
                     categories.add(category);
             }

@@ -51,6 +51,7 @@ public class PasscodePresenter implements BasePresenter {
             PassCodeEntity passCodeEntity = new PassCodeEntity();
             passCodeEntity.setPassCode(createPassCode);
             SecureSecretsModel.getInstance().setPassCodeEntity(passCodeEntity);
+            SecureSecretsModel.getInstance().save();
             mView.passCodeCreate();
         }else{
             //TODO show Error

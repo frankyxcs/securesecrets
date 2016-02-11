@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.praxisgs.securesecrets.base.BaseEntity;
 import com.praxisgs.securesecrets.base.BasePresenter;
 
 import java.util.List;
 
+import model.RecordsEntity;
 import utils.SecureSecretsModelUtils;
 
 /**
@@ -65,8 +67,13 @@ public class CategoriesPresenter implements BasePresenter {
         return mView.getAppContext();
     }
 
-    public List<String> getCategories() {
+    public List<BaseEntity> getCategories() {
+
         return SecureSecretsModelUtils.getCategories();
+    }
+
+    public void floatingBtnClicked() {
+
     }
 
 

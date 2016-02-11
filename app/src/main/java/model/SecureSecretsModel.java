@@ -23,11 +23,17 @@ public class SecureSecretsModel {
     @Expose
     private PassCodeEntity passCodeEntity;
 
+    private TestData testData = new TestData();
+
     public static void initialise(Context context) {
         if (instance == null) {
             instance = new SecureSecretsModel(context);
         }
-        //instance.load();
+        //This is only for test
+        if(instance.getRecordsEntity() == null){
+            instance.setRecordsEntity(instance.testData.getData());
+            instance.save();
+        }
     }
 
     public static SecureSecretsModel getInstance() {
