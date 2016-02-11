@@ -2,7 +2,6 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
-import com.praxisgs.securesecrets.base.BaseActivity;
 import com.praxisgs.securesecrets.base.BaseEntity;
 
 import java.util.ArrayList;
@@ -135,24 +134,24 @@ public class RecordsEntity {
         int id;
 
         @Expose
-        private String addtionalRecordTitle;
+        private String additionalRecordTitle;
         @Expose
-        private String adddtionalRecordPassword;
+        private String additionalRecordPassword;
 
-        public String getAddtionalRecordTitle() {
-            return addtionalRecordTitle;
+        public String getAdditionalRecordTitle() {
+            return additionalRecordTitle;
         }
 
-        public void setAddtionalRecordTitle(String addtionalRecordTitle) {
-            this.addtionalRecordTitle = addtionalRecordTitle;
+        public void setAdditionalRecordTitle(String additionalRecordTitle) {
+            this.additionalRecordTitle = additionalRecordTitle;
         }
 
-        public String getAdddtionalRecordPassword() {
-            return adddtionalRecordPassword;
+        public String getAdditionalRecordPassword() {
+            return additionalRecordPassword;
         }
 
-        public void setAdddtionalRecordPassword(String adddtionalRecordPassword) {
-            this.adddtionalRecordPassword = adddtionalRecordPassword;
+        public void setAdditionalRecordPassword(String additionalRecordPassword) {
+            this.additionalRecordPassword = additionalRecordPassword;
         }
 
         @Override

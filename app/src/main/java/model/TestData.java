@@ -34,8 +34,8 @@ public class TestData {
 
             for (int j = 1; j < 3; j++) {
                 RecordsEntity.AdditionalRecord tempAdditionalRecord = new RecordsEntity.AdditionalRecord();
-                tempAdditionalRecord.setAddtionalRecordTitle("Addtional Info: " + j);
-                tempAdditionalRecord.setAdddtionalRecordPassword("Addtional Password: " + j);
+                tempAdditionalRecord.setAdditionalRecordTitle("Addtional Info: " + j);
+                tempAdditionalRecord.setAdditionalRecordPassword("Addtional Password: " + j);
                 addtionalRecordList.add(tempAdditionalRecord);
             }
 
