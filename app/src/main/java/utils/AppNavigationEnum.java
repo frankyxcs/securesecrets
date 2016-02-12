@@ -2,12 +2,14 @@ package utils;
 
 import com.praxisgs.securesecrets.pages.CategoriesFragment;
 import com.praxisgs.securesecrets.pages.PasscodeFragment;
+import com.praxisgs.securesecrets.pages.RecordsFragment;
 
 /**
  * Created on 04/02/2016.
  */
 public enum AppNavigationEnum {
 
+    RECORDS(RecordsFragment.TAG,"Records"),
     CATEGORIES(CategoriesFragment.TAG,"Categories"),
     PASSCODE(PasscodeFragment.TAG,"Passcode");
 

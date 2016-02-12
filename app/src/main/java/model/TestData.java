@@ -23,10 +23,10 @@ public class TestData {
             tempRecord.setWebsite("Website " + i);
             RecordsEntity.Category category = new RecordsEntity.Category();
             if (i <= 5) {
-                category.setCategoryName("category 1");
+                category.setTitle("category 1");
                 category.setId(1);
             } else {
-                category.setCategoryName("category 2");
+                category.setTitle("category 2");
                 category.setId(2);
             }
             tempRecord.setCategory(category);
@@ -34,7 +34,7 @@ public class TestData {
 
             for (int j = 1; j < 3; j++) {
                 RecordsEntity.AdditionalRecord tempAdditionalRecord = new RecordsEntity.AdditionalRecord();
-                tempAdditionalRecord.setAdditionalRecordTitle("Addtional Info: " + j);
+                tempAdditionalRecord.setTitle("Addtional Info: " + j);
                 tempAdditionalRecord.setAdditionalRecordPassword("Addtional Password: " + j);
                 addtionalRecordList.add(tempAdditionalRecord);
             }

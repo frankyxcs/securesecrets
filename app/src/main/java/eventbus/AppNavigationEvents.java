@@ -5,6 +5,21 @@ package eventbus;
  */
 public class AppNavigationEvents {
 
-    public static class EventShowCategoriesPage{}
-    public static class EventShowPassCodePage{}
+    public static class EventShowCategoriesPage {
+    }
+
+    public static class EventShowPassCodePage {
+    }
+
+    public static class EventShowRecordsForId {
+        final int id;
+
+        public EventShowRecordsForId(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+    }
 }

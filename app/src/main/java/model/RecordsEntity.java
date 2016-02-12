@@ -48,6 +48,7 @@ public class RecordsEntity {
         @Expose
         private List<AdditionalRecord> additionalRecordList = new ArrayList<>();
 
+        @Override
         public String getTitle() {
             return title;
         }
@@ -134,16 +135,17 @@ public class RecordsEntity {
         int id;
 
         @Expose
-        private String additionalRecordTitle;
+        private String title;
         @Expose
         private String additionalRecordPassword;
 
-        public String getAdditionalRecordTitle() {
-            return additionalRecordTitle;
+        @Override
+        public String getTitle() {
+            return title;
         }
 
-        public void setAdditionalRecordTitle(String additionalRecordTitle) {
-            this.additionalRecordTitle = additionalRecordTitle;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public String getAdditionalRecordPassword() {
@@ -168,7 +170,7 @@ public class RecordsEntity {
         private int id;
 
         @Expose
-        private String categoryName;
+        private String title;
 
         @Override
         public int getId() {
@@ -179,12 +181,13 @@ public class RecordsEntity {
             this.id = id;
         }
 
-        public String getCategoryName() {
-            return categoryName;
+        @Override
+        public String getTitle() {
+            return title;
         }
 
-        public void setCategoryName(String categoryName) {
-            this.categoryName = categoryName;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         @Override

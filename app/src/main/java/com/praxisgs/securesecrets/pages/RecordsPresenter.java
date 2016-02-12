@@ -1,6 +1,5 @@
 package com.praxisgs.securesecrets.pages;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,21 +12,20 @@ import java.util.List;
 
 import eventbus.AppNavigationEvents;
 import eventbus.SecureSecretsEventBus;
-import model.RecordsEntity;
 import utils.SecureSecretsModelUtils;
 
 /**
  * Created on 04/02/2016.
  */
-public class CategoriesPresenter implements BasePresenter {
+public class RecordsPresenter implements BasePresenter {
     private ViewInterface mView;
 
-    private CategoriesPresenter(ViewInterface viewInterface) {
+    private RecordsPresenter(ViewInterface viewInterface) {
         this.mView = viewInterface;
     }
 
-    public static CategoriesPresenter newInstance(ViewInterface viewInterface) {
-        return new CategoriesPresenter(viewInterface);
+    public static RecordsPresenter newInstance(ViewInterface viewInterface) {
+        return new RecordsPresenter(viewInterface);
     }
 
     public interface ViewInterface {
@@ -69,9 +67,9 @@ public class CategoriesPresenter implements BasePresenter {
         return mView.getAppContext();
     }
 
-    public List<BaseEntity> getCategories() {
+    public List<BaseEntity> getRecords(int id) {
 
-        return SecureSecretsModelUtils.getCategories();
+        return SecureSecretsModelUtils.getRecordsForCategoryId(id);
     }
 
     public void floatingBtnClicked() {

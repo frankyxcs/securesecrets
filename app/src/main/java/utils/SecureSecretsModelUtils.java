@@ -17,7 +17,7 @@ public class SecureSecretsModelUtils {
         return getCategories(SecureSecretsModel.getInstance().getRecordsEntity());
     }
 
-    private static List<BaseEntity> getCategories(RecordsEntity recordsEntity) {
+    public static List<BaseEntity> getCategories(RecordsEntity recordsEntity) {
         List<BaseEntity> categories = new ArrayList();
         if(recordsEntity !=null && recordsEntity.getRecords() !=null){
             List<RecordsEntity.Record> recordList = recordsEntity.getRecords();
@@ -29,5 +29,22 @@ public class SecureSecretsModelUtils {
         }
 
         return categories;
+    }
+
+    public static List<BaseEntity> getRecordsForCategoryId(int id) {
+        return getRecordsForCategoryId(SecureSecretsModel.getInstance().getRecordsEntity(),id);
+    }
+
+    public static List<BaseEntity> getRecordsForCategoryId(RecordsEntity recordsEntity, int id) {
+        List<BaseEntity> records = new ArrayList();
+        if(recordsEntity !=null && recordsEntity.getRecords() !=null){
+            List<RecordsEntity.Record> recordList = recordsEntity.getRecords();
+            for (RecordsEntity.Record record: recordList){
+                int recordCategoryId = record.getCategory().getId();
+                if (recordCategoryId == id)
+                    records.add(record);
+            }
+        }
+        return records;
     }
 }

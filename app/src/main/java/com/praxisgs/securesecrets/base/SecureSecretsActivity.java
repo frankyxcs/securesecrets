@@ -11,6 +11,7 @@ import com.praxisgs.securesecrets.controllers.AppNavigationControllerInterface;
 import drive.SecureSecretsDrive;
 import model.TestData;
 import utils.AppNavigationEnum;
+import utils.Constants;
 
 public class SecureSecretsActivity extends BaseActivity implements AppNavigationControllerInterface {
 
@@ -117,6 +118,13 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
     @Override
     public void showCategoriesPage() {
         showFragment(AppNavigationEnum.CATEGORIES.getFragmentTag(), null, AppNavigationEnum.CATEGORIES.getTitle());
+    }
+
+    @Override
+    public void showRecordsPage(int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.BUNDLE_ID,id);
+        showFragment(AppNavigationEnum.RECORDS.getFragmentTag(),bundle,AppNavigationEnum.RECORDS.getTitle());
     }
 
 

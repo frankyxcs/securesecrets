@@ -24,6 +24,10 @@ public class AppNavigationController {
         implementer.showPassCodePage();
     }
 
+    public void onEvent(AppNavigationEvents.EventShowRecordsForId event){
+        implementer.showRecordsPage(event.getId());
+    }
+
     public void destroy() {
         SecureSecretsEventBus.unregister(this);
     }

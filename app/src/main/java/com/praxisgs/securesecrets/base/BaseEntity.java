@@ -5,4 +5,5 @@ package com.praxisgs.securesecrets.base;
  */
 public interface BaseEntity {
     int getId();
+    String getTitle();
 }

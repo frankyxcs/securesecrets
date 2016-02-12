@@ -16,5 +16,11 @@ public interface AppNavigationControllerInterface {
 
     void showCategoriesPage();
 
+    /**
+     * Show the Records page for given Category
+     */
+
+    void showRecordsPage(int id);
+
 
 }
