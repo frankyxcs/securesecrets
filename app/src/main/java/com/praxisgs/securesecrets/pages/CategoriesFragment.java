@@ -40,6 +40,7 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
                 mPresenter.floatingBtnClicked();
             }
         });
+        floatingBtn.setVisibility(View.GONE);
         BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), mPresenter.getCategories());
         categories_listview.setAdapter(listAdapter);
         categories_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
