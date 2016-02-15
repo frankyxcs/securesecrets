@@ -7,7 +7,7 @@
         android:id="@+id/categories_records_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/fab_margin"></ListView>
+        android:layout_margin="@dimen/fab_margin"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/categories_records_floatingBtn"
