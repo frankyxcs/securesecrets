@@ -77,7 +77,7 @@ public class RecordsPresenter implements BasePresenter {
     }
 
     public void listItemWithIdClicked(int id) {
-        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordsForId(id));
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordDetails(id));
     }
 
 

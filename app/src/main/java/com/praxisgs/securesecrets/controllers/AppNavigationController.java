@@ -28,6 +28,10 @@ public class AppNavigationController {
         implementer.showRecordsPage(event.getId());
     }
 
+    public void onEvent(AppNavigationEvents.EventShowRecordDetails event){
+        implementer.showRecordDetailsPage(event.getId());
+    }
+
     public void destroy() {
         SecureSecretsEventBus.unregister(this);
     }

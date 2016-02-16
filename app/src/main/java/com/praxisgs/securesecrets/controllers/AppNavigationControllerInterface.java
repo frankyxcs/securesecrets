@@ -22,5 +22,11 @@ public interface AppNavigationControllerInterface {
 
     void showRecordsPage(int id);
 
+    /**
+     * Show the Record Details page for given Record
+     */
+
+    void showRecordDetailsPage(int id);
+
 
 }

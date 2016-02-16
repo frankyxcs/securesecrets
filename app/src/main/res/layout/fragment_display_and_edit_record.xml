@@ -1,11 +1,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/fab_margin">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin">
+        android:layout_height="wrap_content">
 
         <!--
         Title
@@ -20,14 +20,15 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayTitle_textView"
+            android:id="@+id/displayTitle_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayTitle_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_the_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:focusable="false"/>
 
         <!--
         Username
@@ -37,19 +38,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/displayTitle_textView"
+            android:layout_below="@+id/displayTitle_editView"
             android:layout_marginTop="@dimen/fab_med_margin"
             android:text="@string/username"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayUsername_textView"
+            android:id="@+id/displayUsername_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayUsername_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="Enter the Username "
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -60,19 +62,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/displayUsername_textView"
+            android:layout_below="@+id/displayUsername_editView"
             android:layout_marginTop="@dimen/fab_med_margin"
             android:text="@string/password"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayPassword_textView"
+            android:id="@+id/displayPassword_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayPassword_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_the_password"
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -83,19 +86,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/displayPassword_textView"
+            android:layout_below="@+id/displayPassword_editView"
             android:layout_marginTop="@dimen/fab_med_margin"
             android:text="@string/category"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayCategory_textView"
+            android:id="@+id/displayCategory_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayCategory_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_a_category"
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -107,19 +111,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/displayCategory_textView"
+            android:layout_below="@+id/displayCategory_editView"
             android:layout_marginTop="@dimen/fab_med_margin"
             android:text="@string/website"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayWebsite_textView"
+            android:id="@+id/displayWebsite_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayWebsite_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_website"
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -130,19 +135,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/displayWebsite_textView"
+            android:layout_below="@+id/displayWebsite_editView"
             android:layout_marginTop="@dimen/fab_med_margin"
             android:text="@string/notes"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/displayNotes_textView"
+            android:id="@+id/displayNotes_editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/displayNotes_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_additional_notes"
+            android:enabled="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--

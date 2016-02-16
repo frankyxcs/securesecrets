@@ -22,4 +22,15 @@ public class AppNavigationEvents {
             return id;
         }
     }
+
+    public static class EventShowRecordDetails{
+        final int id;
+        public EventShowRecordDetails(int id){
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+    }
 }

@@ -127,5 +127,10 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
         showFragment(AppNavigationEnum.RECORDS.getFragmentTag(),bundle,AppNavigationEnum.RECORDS.getTitle());
     }
 
-
+    @Override
+    public void showRecordDetailsPage(int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.BUNDLE_ID,id);
+        showFragment(AppNavigationEnum.RECORD_DETAILS.getFragmentTag(),bundle,AppNavigationEnum.RECORD_DETAILS.getTitle());
+    }
 }

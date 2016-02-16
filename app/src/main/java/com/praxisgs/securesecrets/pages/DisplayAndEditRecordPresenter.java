@@ -5,28 +5,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.praxisgs.securesecrets.base.BaseEntity;
 import com.praxisgs.securesecrets.base.BasePresenter;
 
-import java.util.List;
-
-import eventbus.AppNavigationEvents;
-import eventbus.SecureSecretsEventBus;
+import model.RecordsEntity;
 import utils.SecureSecretsModelUtils;
 
 /**
  * Created on 04/02/2016.
  */
-public class DisplayRecordPresenter implements BasePresenter {
+public class DisplayAndEditRecordPresenter implements BasePresenter {
     private ViewInterface mView;
 
-    private DisplayRecordPresenter(ViewInterface viewInterface) {
+    private DisplayAndEditRecordPresenter(ViewInterface viewInterface) {
         this.mView = viewInterface;
     }
 
-    public static DisplayRecordPresenter newInstance(ViewInterface viewInterface) {
-        return new DisplayRecordPresenter(viewInterface);
+    public static DisplayAndEditRecordPresenter newInstance(ViewInterface viewInterface) {
+        return new DisplayAndEditRecordPresenter(viewInterface);
     }
+
+
 
     public interface ViewInterface {
         Context getAppContext();
@@ -65,6 +63,10 @@ public class DisplayRecordPresenter implements BasePresenter {
     @Override
     public Context getAppContext() {
         return mView.getAppContext();
+    }
+
+    public RecordsEntity.Record getRecordDetails(int id) {
+        return SecureSecretsModelUtils.getRecordDetailsForId(id);
     }
 
 }

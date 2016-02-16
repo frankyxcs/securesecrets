@@ -17,6 +17,7 @@ public class TestData {
         List<RecordsEntity.Record> recordList = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RecordsEntity.Record tempRecord = new RecordsEntity.Record();
+            tempRecord.setId(i);
             tempRecord.setTitle("Title " + i);
             tempRecord.setUserName("Username " + i);
             tempRecord.setPassword("Password " + i);

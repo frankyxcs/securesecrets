@@ -47,4 +47,16 @@ public class SecureSecretsModelUtils {
         }
         return records;
     }
+
+    public static RecordsEntity.Record getRecordDetailsForId(int id) {
+        return getRecordDetailsForId(SecureSecretsModel.getInstance().getRecordsEntity(),id);
+    }
+
+    public static RecordsEntity.Record getRecordDetailsForId(RecordsEntity recordsEntity, int id) {
+        for(RecordsEntity.Record record:recordsEntity.getRecords()){
+         if(record.getId() == id)
+             return record;
+        }
+        return null;
+    }
 }
