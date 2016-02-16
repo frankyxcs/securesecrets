@@ -1,158 +1,153 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/fab_margin">
+    android:layout_height="match_parent">
 
-    <!--
-    Title
-    -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Title:"
-        android:id="@+id/displayTitle_label_textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Title "
-        android:id="@+id/displayTitle_textView"
-        android:layout_below="@+id/displayTitle_label_textView"
-        android:layout_alignParentStart="true"/>
-
-    <!--
-    Username
-    -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Username:"
-        android:id="@+id/displayUsername_label_textView"
-        android:layout_below="@+id/displayTitle_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Username "
-        android:id="@+id/displayUsername_textView"
-        android:layout_below="@+id/displayUsername_label_textView"
-        android:layout_alignParentStart="true"/>
-
-    <!--
-    Password
-    -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password:"
-        android:id="@+id/displayPassword_label_textView"
-        android:layout_below="@+id/displayUsername_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Password"
-        android:id="@+id/displayPassword_textView"
-        android:layout_below="@+id/displayPassword_label_textView"
-        android:layout_alignParentStart="true"/>
-
-    <!--
-    Category
-    -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Category:"
-        android:id="@+id/displayCategory_label_textView"
-        android:layout_below="@+id/displayPassword_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="category"
-        android:id="@+id/displayCategory_textView"
-        android:layout_below="@+id/displayCategory_label_textView"
-        android:layout_alignParentStart="true"/>
-
-
-    <!--
-    Website
-    -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Website:"
-        android:id="@+id/displayWebsite_label_textView"
-        android:layout_below="@+id/displayCategory_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Website"
-        android:id="@+id/displayWebsite_textView"
-        android:layout_below="@+id/displayWebsite_label_textView"
-        android:layout_alignParentStart="true"/>
-
-    <!--
-   Notes
-   -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Notes:"
-        android:id="@+id/displayNotes_label_textView"
-        android:layout_below="@+id/displayWebsite_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Notes"
-        android:id="@+id/displayNotes_textView"
-        android:layout_below="@+id/displayNotes_label_textView"
-        android:layout_alignParentStart="true"/>
-
-    <!--
-   Additional Info
-   -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Addtional Info:"
-        android:id="@+id/displayAddtionalInfo_label_textView"
-        android:layout_below="@+id/displayNotes_textView"
-        android:layout_marginTop="@dimen/fab_med_margin"
-        android:layout_alignParentStart="true"/>
-
-    <ListView
-        android:id="@+id/displayAddtionalInfo_listView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/displayAddtionalInfo_label_textView"
-        android:layout_alignParentStart="true"/>
+        android:layout_margin="@dimen/fab_margin">
 
-</RelativeLayout>
+        <!--
+        Title
+        -->
+        <TextView
+            android:id="@+id/displayTitle_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayTitle_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayTitle_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="@string/enter_the_title"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        Username
+        -->
+        <TextView
+            android:id="@+id/displayUsername_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayTitle_textView"
+            android:layout_marginTop="@dimen/fab_med_margin"
+            android:text="@string/username"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayUsername_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayUsername_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="Enter the Username "
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        Password
+        -->
+        <TextView
+            android:id="@+id/displayPassword_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayUsername_textView"
+            android:layout_marginTop="@dimen/fab_med_margin"
+            android:text="@string/password"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayPassword_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayPassword_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="@string/enter_the_password"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        Category
+        -->
+        <TextView
+            android:id="@+id/displayCategory_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayPassword_textView"
+            android:layout_marginTop="@dimen/fab_med_margin"
+            android:text="@string/category"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayCategory_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayCategory_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="@string/enter_a_category"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <!--
+        Website
+        -->
+        <TextView
+            android:id="@+id/displayWebsite_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayCategory_textView"
+            android:layout_marginTop="@dimen/fab_med_margin"
+            android:text="@string/website"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayWebsite_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayWebsite_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="@string/enter_website"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        Notes
+        -->
+        <TextView
+            android:id="@+id/displayNotes_label_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayWebsite_textView"
+            android:layout_marginTop="@dimen/fab_med_margin"
+            android:text="@string/notes"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/displayNotes_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayNotes_label_textView"
+            android:layout_marginTop="@dimen/fab_small_margin"
+            android:hint="@string/enter_additional_notes"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        Additional Info
+         -->
+    </RelativeLayout>
+
+</ScrollView>
