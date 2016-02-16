@@ -4,6 +4,8 @@ package com.praxisgs.securesecrets.pages;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -40,6 +42,7 @@ public class DisplayAndEditRecordFragment extends BaseFragment<DisplayAndEditRec
         View view = inflater.inflate(R.layout.fragment_display_and_edit_record, container, false);
         mClickedId = getArguments().getInt(Constants.BUNDLE_ID);
         bindView(view);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -69,7 +72,12 @@ public class DisplayAndEditRecordFragment extends BaseFragment<DisplayAndEditRec
             mWebsite.setFocusable(true);
             mNotes.setFocusable(true);
         }
+
+
     }
 
-
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+       //TODO
+    }
 }
