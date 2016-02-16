@@ -62,12 +62,12 @@ public class DisplayAndEditRecordFragment extends BaseFragment<DisplayAndEditRec
         }
 
         if (mIsEditing) {
-            mTitle.setEnabled(true);
-            mUsername.setEnabled(true);
-            mPassword.setEnabled(true);
-            mCategory.setEnabled(true);
-            mWebsite.setEnabled(true);
-            mNotes.setEnabled(true);
+            mTitle.setFocusable(true);
+            mUsername.setFocusable(true);
+            mPassword.setFocusable(true);
+            mCategory.setFocusable(true);
+            mWebsite.setFocusable(true);
+            mNotes.setFocusable(true);
         }
     }
 

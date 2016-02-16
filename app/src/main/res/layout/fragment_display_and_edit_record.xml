@@ -148,7 +148,7 @@
             android:layout_below="@+id/displayNotes_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_additional_notes"
-            android:enabled="false"
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
