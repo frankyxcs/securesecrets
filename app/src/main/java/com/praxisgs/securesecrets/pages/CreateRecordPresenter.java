@@ -2,33 +2,39 @@ package com.praxisgs.securesecrets.pages;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.praxisgs.securesecrets.base.BasePresenter;
+import com.praxisgs.securesecrets.base.BaseEntity;
 import com.praxisgs.securesecrets.base.BaseRecordDetailsPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.RecordsEntity;
 import model.SecureSecretsModel;
+import utils.AppUtils;
 import utils.SecureSecretsModelUtils;
 
 /**
  * Created on 04/02/2016.
  */
-public class DisplayAndEditRecordPresenter extends BaseRecordDetailsPresenter {
+public class CreateRecordPresenter extends BaseRecordDetailsPresenter {
+//    private ViewInterface mView;
 
-    private DisplayAndEditRecordPresenter(ViewInterface viewInterface) {
+    private CreateRecordPresenter(ViewInterface viewInterface) {
         super(viewInterface);
     }
 
-    public static DisplayAndEditRecordPresenter newInstance(ViewInterface viewInterface) {
-        return new DisplayAndEditRecordPresenter(viewInterface);
+    public static CreateRecordPresenter newInstance(ViewInterface viewInterface) {
+        return new CreateRecordPresenter(viewInterface);
     }
 
+
+//
+//
+//    public interface ViewInterface {
+//        Context getAppContext();
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,19 +78,25 @@ public class DisplayAndEditRecordPresenter extends BaseRecordDetailsPresenter {
     @Override
     public void saveRecord(int id, String title, String username, String password, String categoryTitle, String website, String notes) {
         List<RecordsEntity.Record> records = SecureSecretsModel.getInstance().getRecordsEntity().getRecords();
-        List<RecordsEntity.Record> resultRecords = new ArrayList<>();
-        for(RecordsEntity.Record tempRecord: records){
-            if(tempRecord.getId() == id){
-                tempRecord.setTitle(title);
-                tempRecord.setUserName(username);
-                tempRecord.setPassword(password);
-                tempRecord.getCategory().setTitle(categoryTitle);
-                tempRecord.setWebsite(website);
-                tempRecord.setNotes(notes);
-            }
-            resultRecords.add(tempRecord);
+        RecordsEntity.Record newRecord = new RecordsEntity.Record();
+        newRecord.setId(AppUtils.generateUniqueRecordId());
+        newRecord.setTitle(title);
+        newRecord.setUserName(username);
+        newRecord.setPassword(password);
+        BaseEntity category = SecureSecretsModelUtils.getCategoryDetails(categoryTitle);
+        RecordsEntity.Category tempCategory = new RecordsEntity.Category();
+        if (category == null) {
+            tempCategory.setId(AppUtils.generateUniqueCategoryId());
+            tempCategory.setTitle(categoryTitle);
+        } else {
+            tempCategory.setId(category.getId());
+            tempCategory.setTitle(category.getTitle());
         }
-        SecureSecretsModel.getInstance().getRecordsEntity().setRecords(resultRecords);
+        newRecord.setCategory(tempCategory);
+        newRecord.setWebsite(website);
+        newRecord.setNotes(notes);
+        records.add(newRecord);
+        SecureSecretsModel.getInstance().getRecordsEntity().setRecords(records);
         SecureSecretsModel.getInstance().save();
     }
 

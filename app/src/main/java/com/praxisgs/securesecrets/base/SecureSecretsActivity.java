@@ -1,6 +1,7 @@
 package com.praxisgs.securesecrets.base;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -132,5 +133,10 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
         Bundle bundle = new Bundle();
         bundle.putInt(Constants.BUNDLE_ID,id);
         showFragment(AppNavigationEnum.RECORD_DETAILS.getFragmentTag(),bundle,AppNavigationEnum.RECORD_DETAILS.getTitle());
+    }
+
+    @Override
+    public void showCreateRecordPage() {
+        showFragment(AppNavigationEnum.CREATE_RECORD.getFragmentTag(),null,AppNavigationEnum.CREATE_RECORD.getTitle());
     }
 }

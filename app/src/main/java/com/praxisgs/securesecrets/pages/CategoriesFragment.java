@@ -33,14 +33,6 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
 
     private void bindView(View view) {
         ListView categories_listview = (ListView) view.findViewById(R.id.categories_records_listview);
-        FloatingActionButton floatingBtn = (FloatingActionButton) view.findViewById(R.id.categories_records_floatingBtn);
-        floatingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPresenter.floatingBtnClicked();
-            }
-        });
-        floatingBtn.setVisibility(View.GONE);
         BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), mPresenter.getCategories());
         categories_listview.setAdapter(listAdapter);
         categories_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

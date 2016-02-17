@@ -32,8 +32,13 @@ public class AppNavigationController {
         implementer.showRecordDetailsPage(event.getId());
     }
 
+    public void onEvent(AppNavigationEvents.EventShowCreateRecord event){
+        implementer.showCreateRecordPage();
+    }
+
     public void destroy() {
         SecureSecretsEventBus.unregister(this);
     }
+
 
 }

@@ -25,4 +25,7 @@
     <string name="enter_website">Enter Website</string>
     <string name="notes">Notes:</string>
     <string name="enter_additional_notes">Enter additional notes</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
 </resources>

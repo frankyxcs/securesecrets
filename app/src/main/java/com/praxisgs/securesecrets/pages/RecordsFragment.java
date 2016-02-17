@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -32,18 +35,12 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
         clickedId = getArguments().getInt(Constants.BUNDLE_ID);
         View view = inflater.inflate(R.layout.fragment_categories_records, null);
         bindView(view);
+        setHasOptionsMenu(true);
         return view;
     }
 
     private void bindView(View view) {
         ListView records_listview = (ListView) view.findViewById(R.id.categories_records_listview);
-        FloatingActionButton floatingBtn = (FloatingActionButton) view.findViewById(R.id.categories_records_floatingBtn);
-        floatingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPresenter.floatingBtnClicked();
-            }
-        });
         BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), mPresenter.getRecords(clickedId));
         records_listview.setAdapter(listAdapter);
         records_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,6 +50,23 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
                 mPresenter.listItemWithIdClicked(baseEntity.getId());
             }
         });
-
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.record_list_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.record_add:
+                mPresenter.addRecordClicked();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }

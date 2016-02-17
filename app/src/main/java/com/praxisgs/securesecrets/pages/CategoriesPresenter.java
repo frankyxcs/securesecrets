@@ -74,10 +74,6 @@ public class CategoriesPresenter implements BasePresenter {
         return SecureSecretsModelUtils.getCategories();
     }
 
-    public void floatingBtnClicked() {
-
-    }
-
     public void listItemWithIdClicked(int id) {
         SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordsForId(id));
     }

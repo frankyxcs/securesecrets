@@ -33,4 +33,6 @@ public class AppNavigationEvents {
             return id;
         }
     }
+
+    public static class EventShowCreateRecord{}
 }

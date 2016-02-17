@@ -28,6 +28,7 @@ public class RecordsPresenter implements BasePresenter {
         return new RecordsPresenter(viewInterface);
     }
 
+
     public interface ViewInterface {
         Context getAppContext();
     }
@@ -72,13 +73,12 @@ public class RecordsPresenter implements BasePresenter {
         return SecureSecretsModelUtils.getRecordsForCategoryId(id);
     }
 
-    public void floatingBtnClicked() {
-
-    }
-
     public void listItemWithIdClicked(int id) {
         SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordDetails(id));
     }
 
+    public void addRecordClicked() {
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowCreateRecord());
+    }
 
 }

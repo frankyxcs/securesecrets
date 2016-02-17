@@ -59,4 +59,14 @@ public class SecureSecretsModelUtils {
         }
         return null;
     }
+
+    public static BaseEntity getCategoryDetails(String categoryTitle) {
+        List<BaseEntity> categories = SecureSecretsModelUtils.getCategories();
+        for(BaseEntity tempCategory:categories){
+            if(tempCategory.getTitle().equalsIgnoreCase(categoryTitle)){
+                return tempCategory;
+            }
+        }
+        return null;
+    }
 }

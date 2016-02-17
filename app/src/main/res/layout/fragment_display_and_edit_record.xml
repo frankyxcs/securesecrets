@@ -27,8 +27,7 @@
             android:layout_below="@+id/displayTitle_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_the_title"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:focusable="false"/>
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
         Username
@@ -51,7 +50,6 @@
             android:layout_below="@+id/displayUsername_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="Enter the Username "
-            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -75,7 +73,6 @@
             android:layout_below="@+id/displayPassword_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_the_password"
-            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -99,7 +96,6 @@
             android:layout_below="@+id/displayCategory_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_a_category"
-            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -124,7 +120,6 @@
             android:layout_below="@+id/displayWebsite_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_website"
-            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--
@@ -148,7 +143,6 @@
             android:layout_below="@+id/displayNotes_label_textView"
             android:layout_marginTop="@dimen/fab_small_margin"
             android:hint="@string/enter_additional_notes"
-            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--

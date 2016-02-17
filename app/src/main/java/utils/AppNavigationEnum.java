@@ -1,6 +1,7 @@
 package utils;
 
 import com.praxisgs.securesecrets.pages.CategoriesFragment;
+import com.praxisgs.securesecrets.pages.CreateRecordFragment;
 import com.praxisgs.securesecrets.pages.DisplayAndEditRecordFragment;
 import com.praxisgs.securesecrets.pages.PasscodeFragment;
 import com.praxisgs.securesecrets.pages.RecordsFragment;
@@ -10,6 +11,7 @@ import com.praxisgs.securesecrets.pages.RecordsFragment;
  */
 public enum AppNavigationEnum {
 
+    CREATE_RECORD(CreateRecordFragment.TAG,"Create Record"),
     RECORD_DETAILS(DisplayAndEditRecordFragment.TAG,"Record"),
     RECORDS(RecordsFragment.TAG,"Records"),
     CATEGORIES(CategoriesFragment.TAG,"Categories"),

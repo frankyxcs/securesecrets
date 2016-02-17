@@ -28,5 +28,11 @@ public interface AppNavigationControllerInterface {
 
     void showRecordDetailsPage(int id);
 
+    /**
+     * Show Create Record Page
+     */
+
+    void showCreateRecordPage();
+
 
 }
