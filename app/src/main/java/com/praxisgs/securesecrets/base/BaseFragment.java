@@ -4,17 +4,11 @@ package com.praxisgs.securesecrets.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.praxisgs.securesecrets.R;
-
-import eventbus.SecureSecretsEventBus;
 
 /**
  * A simple {@link Fragment} subclass.

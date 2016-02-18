@@ -22,6 +22,8 @@ public abstract class BaseRecordDetailsPresenter implements BasePresenter {
         this.mView = viewInterface;
     }
 
+
+
 //    public static BaseRecordDetailsPresenter newInstance(ViewInterface viewInterface) {
 //        return new BaseRecordDetailsPresenter(viewInterface);
 //    }
@@ -70,6 +72,18 @@ public abstract class BaseRecordDetailsPresenter implements BasePresenter {
 
     public RecordsEntity.Record getRecordDetails(int id) {
         return SecureSecretsModelUtils.getRecordDetailsForId(id);
+    }
+
+    public void deleteRecords(List<Integer> ids) {
+        List<RecordsEntity.Record> records = SecureSecretsModel.getInstance().getRecordsEntity().getRecords();
+        List<RecordsEntity.Record> resultRecords = new ArrayList<>();
+        for(RecordsEntity.Record tempRecord: records){
+            if(!ids.contains(tempRecord.getId())){
+                resultRecords.add(tempRecord);
+            }
+        }
+        SecureSecretsModel.getInstance().getRecordsEntity().setRecords(resultRecords);
+        SecureSecretsModel.getInstance().save();
     }
 
     public abstract void saveRecord(int id, String title, String username, String password, String categoryTitle, String website, String notes);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
@@ -51,7 +52,7 @@ public class BaseListAdapter extends BaseAdapter {
         if(convertView ==null){
             viewHolder = new ViewHolder();
             convertView = View.inflate(context, R.layout.base_list_view_item, null);
-            viewHolder.titleTxt = (TextView) convertView.findViewById(R.id.base_list_view_txt);
+            viewHolder.titleTxt = (CheckedTextView) convertView.findViewById(R.id.base_list_view_txt);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -59,11 +60,12 @@ public class BaseListAdapter extends BaseAdapter {
 
         BaseEntity listItem = getItem(position);
         viewHolder.titleTxt.setText(listItem.getTitle());
+        viewHolder.titleTxt.setChecked(true);
         return convertView;
 
     }
 
     class ViewHolder{
-        TextView titleTxt;
+        CheckedTextView titleTxt;
     }
 }

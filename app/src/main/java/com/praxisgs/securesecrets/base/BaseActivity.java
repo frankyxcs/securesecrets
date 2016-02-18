@@ -1,10 +1,10 @@
 package com.praxisgs.securesecrets.base;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
 
@@ -54,18 +54,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void showFragment(String fragmentTag, Bundle bundle, String title) {
+    public void showFragment(String fragmentTag, Bundle bundle, String title, boolean addToBackStack) {
 
 //        if (newInstance != null && newInstance.getTag() != null && newInstance.getTag().equals(fragmentTag)) {
 //            return;
 //        }
 
         hideKeyboard();
-        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         Fragment newInstance = Fragment.instantiate(this, fragmentTag, bundle);
         ft.replace(R.id.fragment_container, newInstance);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        if (addToBackStack) {
+            ft.addToBackStack(fragmentTag);
+        }
         ft.commit();
 
         setTitle(title);

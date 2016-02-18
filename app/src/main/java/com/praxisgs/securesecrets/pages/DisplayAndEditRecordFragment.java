@@ -9,13 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.praxisgs.securesecrets.R;
 
-import model.RecordsEntity;
-import utils.Constants;
 import com.praxisgs.securesecrets.base.BaseRecordDetailsFragment;
+
+import java.util.ArrayList;
 
 
 /**
@@ -52,6 +51,7 @@ public class DisplayAndEditRecordFragment extends BaseRecordDetailsFragment<Disp
             if (mMenu != null) {
                 mMenu.findItem(R.id.display_record_save).setVisible(true);
                 mMenu.findItem(R.id.display_record_edit).setVisible(false);
+                mMenu.findItem(R.id.display_record_delete).setVisible(false);
             }
         } else {
             mTitle.setEnabled(false);
@@ -61,6 +61,7 @@ public class DisplayAndEditRecordFragment extends BaseRecordDetailsFragment<Disp
             mWebsite.setEnabled(false);
             mNotes.setEnabled(false);
             if (mMenu != null) {
+                mMenu.findItem(R.id.display_record_delete).setVisible(true);
                 mMenu.findItem(R.id.display_record_edit).setVisible(true);
                 mMenu.findItem(R.id.display_record_save).setVisible(false);
             }
@@ -81,6 +82,11 @@ public class DisplayAndEditRecordFragment extends BaseRecordDetailsFragment<Disp
                 mIsEditing = true;
                 enableDisableEditing();
                 return true;
+            case R.id.display_record_delete:
+                mIsEditing = false;
+                deleteRecord();
+                enableDisableEditing();
+                return true;
             case R.id.display_record_save:
                 mIsEditing = false;
                 saveRecord();
@@ -93,5 +99,9 @@ public class DisplayAndEditRecordFragment extends BaseRecordDetailsFragment<Disp
 
     private void saveRecord() {
         mPresenter.saveRecord(mClickedId, mTitle.getText().toString(), mUsername.getText().toString(), mPassword.getText().toString(), mCategory.getText().toString(), mWebsite.getText().toString(), mNotes.getText().toString());
+    }
+
+    private void deleteRecord(){
+        mPresenter.deleteRecords(new ArrayList<Integer>(mClickedId));
     }
 }
