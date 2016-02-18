@@ -35,4 +35,11 @@ public interface AppNavigationControllerInterface {
     void showCreateRecordPage();
 
 
+    /**
+     * Show Previous Page
+     */
+
+    void showPreviousPage();
+
+
 }

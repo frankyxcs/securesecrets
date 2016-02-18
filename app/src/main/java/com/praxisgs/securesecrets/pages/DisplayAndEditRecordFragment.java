@@ -16,6 +16,8 @@ import com.praxisgs.securesecrets.base.BaseRecordDetailsFragment;
 
 import java.util.ArrayList;
 
+import eventbus.SecureSecretsEventBus;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,6 +104,8 @@ public class DisplayAndEditRecordFragment extends BaseRecordDetailsFragment<Disp
     }
 
     private void deleteRecord(){
-        mPresenter.deleteRecords(new ArrayList<Integer>(mClickedId));
+        ArrayList<Integer> idsToBeDeleted = new ArrayList<Integer>();
+        idsToBeDeleted.add(mClickedId);
+        mPresenter.deleteRecords(idsToBeDeleted);
     }
 }

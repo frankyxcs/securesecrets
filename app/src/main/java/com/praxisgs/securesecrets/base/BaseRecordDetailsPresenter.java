@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import eventbus.AppNavigationEvents;
+import eventbus.SecureSecretsEventBus;
 import model.RecordsEntity;
 import model.SecureSecretsModel;
 import utils.SecureSecretsModelUtils;
@@ -84,6 +86,7 @@ public abstract class BaseRecordDetailsPresenter implements BasePresenter {
         }
         SecureSecretsModel.getInstance().getRecordsEntity().setRecords(resultRecords);
         SecureSecretsModel.getInstance().save();
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowPreviousPage());
     }
 
     public abstract void saveRecord(int id, String title, String username, String password, String categoryTitle, String website, String notes);

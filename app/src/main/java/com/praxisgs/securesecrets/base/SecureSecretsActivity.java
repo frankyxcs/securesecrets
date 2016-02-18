@@ -1,16 +1,11 @@
 package com.praxisgs.securesecrets.base;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.controllers.AppNavigationController;
 import com.praxisgs.securesecrets.controllers.AppNavigationControllerInterface;
 
 import drive.SecureSecretsDrive;
-import model.TestData;
 import utils.AppNavigationEnum;
 import utils.Constants;
 
@@ -46,7 +41,7 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
     }
 
     private void initialiseControllers() {
-        appNavigationController =   new AppNavigationController(this);
+        appNavigationController = new AppNavigationController(this);
     }
 
 
@@ -110,7 +105,7 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
      */
     @Override
     public void showPassCodePage() {
-        showFragment(AppNavigationEnum.PASSCODE.getFragmentTag(),null,AppNavigationEnum.PASSCODE.getTitle(), false);
+        showFragment(AppNavigationEnum.PASSCODE.getFragmentTag(), null, AppNavigationEnum.PASSCODE.getTitle(), false);
     }
 
     /**
@@ -118,25 +113,32 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
      */
     @Override
     public void showCategoriesPage() {
-        showFragment(AppNavigationEnum.CATEGORIES.getFragmentTag(), null, AppNavigationEnum.CATEGORIES.getTitle(),true);
+        showFragment(AppNavigationEnum.CATEGORIES.getFragmentTag(), null, AppNavigationEnum.CATEGORIES.getTitle(), true);
     }
 
     @Override
     public void showRecordsPage(int id) {
         Bundle bundle = new Bundle();
-        bundle.putInt(Constants.BUNDLE_ID,id);
-        showFragment(AppNavigationEnum.RECORDS.getFragmentTag(),bundle,AppNavigationEnum.RECORDS.getTitle(),true);
+        bundle.putInt(Constants.BUNDLE_ID, id);
+        showFragment(AppNavigationEnum.RECORDS.getFragmentTag(), bundle, AppNavigationEnum.RECORDS.getTitle(), true);
     }
 
     @Override
     public void showRecordDetailsPage(int id) {
         Bundle bundle = new Bundle();
-        bundle.putInt(Constants.BUNDLE_ID,id);
-        showFragment(AppNavigationEnum.RECORD_DETAILS.getFragmentTag(),bundle,AppNavigationEnum.RECORD_DETAILS.getTitle(),true);
+        bundle.putInt(Constants.BUNDLE_ID, id);
+        showFragment(AppNavigationEnum.RECORD_DETAILS.getFragmentTag(), bundle, AppNavigationEnum.RECORD_DETAILS.getTitle(), true);
     }
 
     @Override
     public void showCreateRecordPage() {
-        showFragment(AppNavigationEnum.CREATE_RECORD.getFragmentTag(),null,AppNavigationEnum.CREATE_RECORD.getTitle(),true);
+        showFragment(AppNavigationEnum.CREATE_RECORD.getFragmentTag(), null, AppNavigationEnum.CREATE_RECORD.getTitle(), true);
+    }
+
+    @Override
+    public void showPreviousPage() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        }
     }
 }

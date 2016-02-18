@@ -5,6 +5,8 @@ package eventbus;
  */
 public class AppNavigationEvents {
 
+    public static class EventShowPreviousPage{}
+
     public static class EventShowCategoriesPage {
     }
 

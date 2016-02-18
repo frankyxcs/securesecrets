@@ -10,6 +10,8 @@ import com.praxisgs.securesecrets.base.BaseRecordDetailsPresenter;
 
 import java.util.List;
 
+import eventbus.AppNavigationEvents;
+import eventbus.SecureSecretsEventBus;
 import model.RecordsEntity;
 import model.SecureSecretsModel;
 import utils.AppUtils;
@@ -98,6 +100,7 @@ public class CreateRecordPresenter extends BaseRecordDetailsPresenter {
         records.add(newRecord);
         SecureSecretsModel.getInstance().getRecordsEntity().setRecords(records);
         SecureSecretsModel.getInstance().save();
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowPreviousPage());
     }
 
 

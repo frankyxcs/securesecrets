@@ -12,6 +12,8 @@ import com.praxisgs.securesecrets.base.BaseRecordDetailsPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import eventbus.AppNavigationEvents;
+import eventbus.SecureSecretsEventBus;
 import model.RecordsEntity;
 import model.SecureSecretsModel;
 import utils.SecureSecretsModelUtils;
@@ -86,6 +88,7 @@ public class DisplayAndEditRecordPresenter extends BaseRecordDetailsPresenter {
         }
         SecureSecretsModel.getInstance().getRecordsEntity().setRecords(resultRecords);
         SecureSecretsModel.getInstance().save();
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowPreviousPage());
     }
 
 

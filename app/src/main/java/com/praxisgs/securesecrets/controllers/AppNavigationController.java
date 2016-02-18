@@ -36,6 +36,10 @@ public class AppNavigationController {
         implementer.showCreateRecordPage();
     }
 
+    public void onEvent(AppNavigationEvents.EventShowPreviousPage event){
+        implementer.showPreviousPage();
+    }
+
     public void destroy() {
         SecureSecretsEventBus.unregister(this);
     }
