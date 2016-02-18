@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.base.BaseEntity;
@@ -50,6 +51,11 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
                 mPresenter.listItemWithIdClicked(baseEntity.getId());
             }
         });
+
+        TextView emptyTextView = (TextView) view.findViewById(R.id.categories_records_empty_list);
+        if(!mPresenter.getRecords(clickedId).isEmpty()){
+            emptyTextView.setVisibility(View.GONE);
+        }
     }
 
     @Override

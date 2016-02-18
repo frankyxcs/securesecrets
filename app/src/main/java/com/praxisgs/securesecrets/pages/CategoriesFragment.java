@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.base.BaseEntity;
@@ -28,6 +32,7 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_categories_records, null);
         bindView(view);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -43,5 +48,26 @@ public class CategoriesFragment extends BaseFragment<CategoriesPresenter> implem
             }
         });
 
+        TextView emptyTextView = (TextView) view.findViewById(R.id.categories_records_empty_list);
+        if(!mPresenter.getCategories().isEmpty()){
+            emptyTextView.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.category_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.category_record_add:
+                mPresenter.addRecordClicked();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

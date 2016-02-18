@@ -30,6 +30,8 @@ public class CategoriesPresenter implements BasePresenter {
         return new CategoriesPresenter(viewInterface);
     }
 
+
+
     public interface ViewInterface {
         Context getAppContext();
     }
@@ -78,5 +80,8 @@ public class CategoriesPresenter implements BasePresenter {
         SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordsForId(id));
     }
 
+    public void addRecordClicked() {
+        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowCreateRecord());
+    }
 
 }

@@ -79,6 +79,11 @@ public class CreateRecordPresenter extends BaseRecordDetailsPresenter {
 
     @Override
     public void saveRecord(int id, String title, String username, String password, String categoryTitle, String website, String notes) {
+        //This is required only for the first time
+        //TODO do it properly
+        if (SecureSecretsModel.getInstance().getRecordsEntity() == null) {
+            SecureSecretsModel.getInstance().setRecordsEntity(new RecordsEntity());
+        }
         List<RecordsEntity.Record> records = SecureSecretsModel.getInstance().getRecordsEntity().getRecords();
         RecordsEntity.Record newRecord = new RecordsEntity.Record();
         newRecord.setId(AppUtils.generateUniqueRecordId());

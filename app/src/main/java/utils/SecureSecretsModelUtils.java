@@ -53,6 +53,9 @@ public class SecureSecretsModelUtils {
     }
 
     public static RecordsEntity.Record getRecordDetailsForId(RecordsEntity recordsEntity, int id) {
+        if(recordsEntity == null){
+            return null;
+        }
         for(RecordsEntity.Record record:recordsEntity.getRecords()){
          if(record.getId() == id)
              return record;

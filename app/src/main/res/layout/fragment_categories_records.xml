@@ -9,4 +9,11 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/fab_margin"/>
 
+    <TextView android:id="@+id/categories_records_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/empty_list_message"/>
+
 </RelativeLayout>
