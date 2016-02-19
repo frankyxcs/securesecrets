@@ -116,4 +116,5 @@ public class PasscodeFragment extends BaseFragment<PasscodePresenter> implements
     public void passCodeCreate() {
         showRequiredLayout();
     }
+
 }

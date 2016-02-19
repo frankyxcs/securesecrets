@@ -1,19 +1,17 @@
 package com.praxisgs.securesecrets.pages;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.praxisgs.securesecrets.base.BaseEntity;
+import model.BaseEntity;
 import com.praxisgs.securesecrets.base.BasePresenter;
 
 import java.util.List;
 
 import eventbus.AppNavigationEvents;
 import eventbus.SecureSecretsEventBus;
-import model.RecordsEntity;
 import utils.SecureSecretsModelUtils;
 
 /**

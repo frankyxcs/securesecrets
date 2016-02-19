@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.praxisgs.securesecrets.base.BaseEntity;
+import model.BaseEntity;
 import com.praxisgs.securesecrets.base.BasePresenter;
 
 import java.util.List;

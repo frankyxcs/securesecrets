@@ -1,4 +1,4 @@
-package com.praxisgs.securesecrets.base;
+package model;
 
 /**
  * Created on 11/02/2016.

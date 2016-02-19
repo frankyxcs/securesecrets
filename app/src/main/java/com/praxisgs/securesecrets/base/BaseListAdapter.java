@@ -1,17 +1,16 @@
 package com.praxisgs.securesecrets.base;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
 
 import java.util.List;
+
+import model.BaseEntity;
 
 /**
  * Created on 05/02/2016.

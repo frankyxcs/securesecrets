@@ -1,6 +1,6 @@
 package utils;
 
-import com.praxisgs.securesecrets.base.BaseEntity;
+import model.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;

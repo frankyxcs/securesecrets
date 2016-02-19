@@ -2,7 +2,6 @@ package com.praxisgs.securesecrets.pages;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
-import com.praxisgs.securesecrets.base.BaseEntity;
+import model.BaseEntity;
 import com.praxisgs.securesecrets.base.BaseFragment;
 import com.praxisgs.securesecrets.base.BaseListAdapter;
 

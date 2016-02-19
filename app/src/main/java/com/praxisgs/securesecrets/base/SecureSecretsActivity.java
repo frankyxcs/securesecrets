@@ -141,4 +141,6 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
             getSupportFragmentManager().popBackStack();
         }
     }
+
+
 }

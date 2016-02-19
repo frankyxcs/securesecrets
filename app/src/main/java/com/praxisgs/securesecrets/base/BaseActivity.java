@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +23,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_activity);
+        setBackStackListner();
+    }
+
+    private void setBackStackListner() {
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                String fragmentTag = getSupportFragmentManager().findFragmentById(R.id.fragment_container).getTag();
+                setTitle(fragmentTag);
+            }
+        });
     }
 
     @Override
@@ -64,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         Fragment newInstance = Fragment.instantiate(this, fragmentTag, bundle);
-        ft.replace(R.id.fragment_container, newInstance);
+        ft.replace(R.id.fragment_container, newInstance,title);
         if (addToBackStack) {
             ft.addToBackStack(fragmentTag);
         }

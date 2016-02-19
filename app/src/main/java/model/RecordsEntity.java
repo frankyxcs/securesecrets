@@ -2,7 +2,6 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
-import com.praxisgs.securesecrets.base.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
