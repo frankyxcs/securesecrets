@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,11 +18,15 @@ import model.BaseEntity;
 import com.praxisgs.securesecrets.base.BaseFragment;
 import com.praxisgs.securesecrets.base.BaseListAdapter;
 
+import java.util.List;
+
 import utils.Constants;
 
 public class RecordsFragment extends BaseFragment<RecordsPresenter> implements RecordsPresenter.ViewInterface {
     public static final String TAG = RecordsFragment.class.getName();
     private int clickedId;
+    private boolean mShowMultiSelection;
+    private ListView mRecordsListview;
 
 
     @Override
@@ -40,10 +45,10 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
     }
 
     private void bindView(View view) {
-        ListView records_listview = (ListView) view.findViewById(R.id.categories_records_listview);
+        mRecordsListview = (ListView) view.findViewById(R.id.categories_records_listview);
         BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), mPresenter.getRecords(clickedId));
-        records_listview.setAdapter(listAdapter);
-        records_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mRecordsListview.setAdapter(listAdapter);
+        mRecordsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BaseEntity baseEntity = (BaseEntity)parent.getItemAtPosition(position);
@@ -68,9 +73,38 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
             case R.id.record_add:
                 mPresenter.addRecordClicked();
                 return true;
+            case R.id.record_delete:
+                mShowMultiSelection = true;
+                enableDisableMultiSelection();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void enableDisableMultiSelection() {
+        List<BaseEntity> records = mPresenter.getRecords(clickedId);
+        final BaseListAdapter listAdapter;
+        if(mShowMultiSelection){
+            listAdapter = new BaseListAdapter(getAppContext(),records,true );
+
+            mRecordsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    listAdapter.toggleSelection(view,position);
+                }
+            });
+        }else{
+            listAdapter = new BaseListAdapter(getAppContext(), records);
+            mRecordsListview.setAdapter(listAdapter);
+            mRecordsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    BaseEntity baseEntity = (BaseEntity)parent.getItemAtPosition(position);
+                    mPresenter.listItemWithIdClicked(baseEntity.getId());
+                }
+            });
+        }
+        mRecordsListview.setAdapter(listAdapter);
     }
 
 

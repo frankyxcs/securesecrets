@@ -6,4 +6,6 @@ package model;
 public interface BaseEntity {
     int getId();
     String getTitle();
+    void setSelelected(boolean isSelected);
+    boolean isSelected();
 }

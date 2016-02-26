@@ -29,11 +29,11 @@ public class SecureSecretsModel {
         if (instance == null) {
             instance = new SecureSecretsModel(context);
         }
-//        //This is only for test
-//        if(instance.getRecordsEntity() == null){
-//            instance.setRecordsEntity(instance.testData.getData());
-//            instance.save();
-//        }
+        //This is only for test
+        if(instance.getRecordsEntity() == null){
+            instance.setRecordsEntity(instance.testData.getData());
+            instance.save();
+        }
     }
 
     public static SecureSecretsModel getInstance() {

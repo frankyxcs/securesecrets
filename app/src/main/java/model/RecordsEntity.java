@@ -29,6 +29,7 @@ public class RecordsEntity {
 
     public static class Record implements BaseEntity {
 
+
         @Expose
         private int id;
         @Expose
@@ -45,11 +46,25 @@ public class RecordsEntity {
         private String notes;
 
         @Expose
+        private boolean selected;
+
+        @Expose
         private List<AdditionalRecord> additionalRecordList = new ArrayList<>();
+
 
         @Override
         public String getTitle() {
             return title;
+        }
+
+        @Override
+        public void setSelelected(boolean isSelected) {
+            this.selected = isSelected;
+        }
+
+        @Override
+        public boolean isSelected() {
+            return selected;
         }
 
         public void setTitle(String title) {
@@ -115,8 +130,8 @@ public class RecordsEntity {
 
         @Override
         public boolean equals(Object object) {
-            if(object!=null && object instanceof Record){
-                return this.id == ((Record)object).getId();
+            if (object != null && object instanceof Record) {
+                return this.id == ((Record) object).getId();
             }
             return false;
 
@@ -128,7 +143,7 @@ public class RecordsEntity {
         }
     }
 
-    public static class AdditionalRecord implements BaseEntity{
+    public static class AdditionalRecord implements BaseEntity {
 
         @Expose
         int id;
@@ -138,9 +153,22 @@ public class RecordsEntity {
         @Expose
         private String additionalRecordPassword;
 
+        @Expose
+        private boolean selected;
+
         @Override
         public String getTitle() {
             return title;
+        }
+
+        @Override
+        public void setSelelected(boolean isSelected) {
+            this.selected = isSelected;
+        }
+
+        @Override
+        public boolean isSelected() {
+            return selected;
         }
 
         public void setTitle(String title) {
@@ -164,12 +192,16 @@ public class RecordsEntity {
             this.id = id;
         }
     }
-    public static class Category implements BaseEntity{
+
+    public static class Category implements BaseEntity {
         @Expose
         private int id;
 
         @Expose
         private String title;
+
+        @Expose
+        private boolean selected;
 
         @Override
         public int getId() {
@@ -185,14 +217,24 @@ public class RecordsEntity {
             return title;
         }
 
+        @Override
+        public void setSelelected(boolean isSelected) {
+            this.selected = isSelected;
+        }
+
+        @Override
+        public boolean isSelected() {
+            return selected;
+        }
+
         public void setTitle(String title) {
             this.title = title;
         }
 
         @Override
         public boolean equals(Object object) {
-            if((object !=null) && (object instanceof Category)){
-                return (this.id == ((Category)object).getId());
+            if ((object != null) && (object instanceof Category)) {
+                return (this.id == ((Category) object).getId());
             }
             return false;
         }
