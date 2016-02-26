@@ -70,18 +70,18 @@ public class BaseListAdapter extends BaseAdapter {
 
             if(mShowMultiSelection){
                 viewHolder.checkBox.setVisibility(View.VISIBLE);
-                viewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        int positionOfCheckBox = (Integer) buttonView.getTag();
-                        mListItems.get(positionOfCheckBox).setSelelected(buttonView.isChecked());
-
-                    }
-                });
+//                viewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                        int positionOfCheckBox = (Integer) buttonView.getTag();
+//                        mListItems.get(positionOfCheckBox).setSelelected(buttonView.isChecked());
+//
+//                    }
+//                });
 
             }else{
                 viewHolder.checkBox.setVisibility(View.INVISIBLE);
-                viewHolder.checkBox.setOnCheckedChangeListener(null);
+               // viewHolder.checkBox.setOnCheckedChangeListener(null);
             }
 
 
