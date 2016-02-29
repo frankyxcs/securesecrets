@@ -74,7 +74,7 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
                 mPresenter.addRecordClicked();
                 return true;
             case R.id.record_delete:
-                mShowMultiSelection = true;
+                mShowMultiSelection = !mShowMultiSelection;
                 enableDisableMultiSelection();
             default:
                 return super.onOptionsItemSelected(item);
@@ -86,11 +86,12 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
         final BaseListAdapter listAdapter;
         if(mShowMultiSelection){
             listAdapter = new BaseListAdapter(getAppContext(),records,true );
-
+            mRecordsListview.setAdapter(listAdapter);
             mRecordsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    listAdapter.toggleSelection(view,position);
+                    CheckBox box = (CheckBox)view.findViewById(R.id.base_list_view_checkBox);
+                    box.setChecked(true);
                 }
             });
         }else{
@@ -104,7 +105,7 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
                 }
             });
         }
-        mRecordsListview.setAdapter(listAdapter);
+
     }
 
 
