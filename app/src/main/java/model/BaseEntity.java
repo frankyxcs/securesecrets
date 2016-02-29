@@ -5,7 +5,14 @@ package model;
  */
 public interface BaseEntity {
     int getId();
+
+    void setId(int id);
+
     String getTitle();
-    void setSelelected(boolean isSelected);
+
+    void setTitle(String title);
+
+    void setSelected(boolean isSelected);
+
     boolean isSelected();
 }

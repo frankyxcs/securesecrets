@@ -8,6 +8,7 @@ import java.util.Random;
 
 import model.RecordsEntity;
 import model.SecureSecretsModel;
+import model.SettingsEntity;
 
 /**
  * Created on 11/02/2016.
@@ -32,6 +33,7 @@ public class AppUtils {
         }
         return getRandomNumber(recordIDs);
     }
+
 
 
 

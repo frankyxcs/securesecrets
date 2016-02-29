@@ -142,5 +142,13 @@ public class SecureSecretsActivity extends BaseActivity implements AppNavigation
         }
     }
 
+    /**
+     * Show Settings Page
+     */
+    @Override
+    public void showSettingsPage() {
+        showFragment(AppNavigationEnum.SETTINGS.getFragmentTag(), null, AppNavigationEnum.SETTINGS.getTitle(), true);
+    }
+
 
 }

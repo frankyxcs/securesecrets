@@ -41,5 +41,12 @@ public interface AppNavigationControllerInterface {
 
     void showPreviousPage();
 
+    /**
+     *Show Settings Page
+     */
+
+    void showSettingsPage();
+
+
 
 }

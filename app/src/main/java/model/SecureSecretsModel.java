@@ -23,6 +23,8 @@ public class SecureSecretsModel {
     @Expose
     private PassCodeEntity passCodeEntity;
 
+    private SettingsEntity settingsEntity;
+
     private TestData testData = new TestData();
 
     public static void initialise(Context context) {
@@ -94,4 +96,11 @@ public class SecureSecretsModel {
         this.passCodeEntity = passCodeEntity;
     }
 
+    public SettingsEntity getSettingsEntity() {
+        return settingsEntity;
+    }
+
+    public void setSettingsEntity(SettingsEntity settingsEntity) {
+        this.settingsEntity = settingsEntity;
+    }
 }

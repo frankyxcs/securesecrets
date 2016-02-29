@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.praxisgs.securesecrets.R;
@@ -74,7 +73,7 @@ public class BaseListAdapter extends BaseAdapter {
 //                    @Override
 //                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                        int positionOfCheckBox = (Integer) buttonView.getTag();
-//                        mListItems.get(positionOfCheckBox).setSelelected(buttonView.isChecked());
+//                        mListItems.get(positionOfCheckBox).setSelected(buttonView.isChecked());
 //
 //                    }
 //                });
@@ -103,10 +102,10 @@ public class BaseListAdapter extends BaseAdapter {
         CheckBox checkedBox = (CheckBox) view.findViewById(R.id.base_list_view_checkBox);
         BaseEntity selectedItem = mListItems.get(position);
         if(selectedItem.isSelected()){
-            selectedItem.setSelelected(false);
+            selectedItem.setSelected(false);
             checkedBox.setSelected(false);
         }else{
-            selectedItem.setSelelected(true);
+            selectedItem.setSelected(true);
             checkedBox.setSelected(true);
         }
 

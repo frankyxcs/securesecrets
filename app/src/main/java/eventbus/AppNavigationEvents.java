@@ -37,4 +37,6 @@ public class AppNavigationEvents {
     }
 
     public static class EventShowCreateRecord{}
+
+    public static class EventShowSettings{}
 }

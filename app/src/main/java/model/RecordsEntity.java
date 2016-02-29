@@ -58,7 +58,7 @@ public class RecordsEntity {
         }
 
         @Override
-        public void setSelelected(boolean isSelected) {
+        public void setSelected(boolean isSelected) {
             this.selected = isSelected;
         }
 
@@ -162,7 +162,7 @@ public class RecordsEntity {
         }
 
         @Override
-        public void setSelelected(boolean isSelected) {
+        public void setSelected(boolean isSelected) {
             this.selected = isSelected;
         }
 
@@ -218,7 +218,7 @@ public class RecordsEntity {
         }
 
         @Override
-        public void setSelelected(boolean isSelected) {
+        public void setSelected(boolean isSelected) {
             this.selected = isSelected;
         }
 

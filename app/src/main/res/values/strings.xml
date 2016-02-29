@@ -30,4 +30,5 @@
     <string name="add">Add</string>
     <string name="delete">Delete</string>
     <string name="empty_list_message">Please press on + button to add</string>
+    <string name="settings">Settings</string>
 </resources>

@@ -3,29 +3,29 @@ package com.praxisgs.securesecrets.pages;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
-import model.BaseEntity;
+import com.praxisgs.securesecrets.R;
 import com.praxisgs.securesecrets.base.BasePresenter;
 
 import java.util.List;
 
-import eventbus.AppNavigationEvents;
-import eventbus.SecureSecretsEventBus;
-import utils.SecureSecretsModelUtils;
+import model.BaseEntity;
+import utils.SettingsUtils;
 
 /**
- * Created on 04/02/2016.
+ * Created on ${<VARIABLE_DATE>}.
  */
-public class CategoriesPresenter implements BasePresenter {
+public class SettingsPresenter implements BasePresenter {
     private ViewInterface mView;
 
-    private CategoriesPresenter(ViewInterface viewInterface) {
+    private SettingsPresenter(ViewInterface viewInterface) {
         this.mView = viewInterface;
     }
 
-    public static CategoriesPresenter newInstance(ViewInterface viewInterface) {
-        return new CategoriesPresenter(viewInterface);
+    public static SettingsPresenter newInstance(ViewInterface viewInterface) {
+        return new SettingsPresenter(viewInterface);
     }
 
 
@@ -70,21 +70,11 @@ public class CategoriesPresenter implements BasePresenter {
         return mView.getAppContext();
     }
 
-    public List<BaseEntity> getCategories() {
-
-        return SecureSecretsModelUtils.getCategories();
+    public List<BaseEntity> getSettings() {
+        return SettingsUtils.getSettings();
     }
 
     public void listItemWithIdClicked(int id) {
-        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowRecordsForId(id));
-    }
 
-    public void addRecordClicked() {
-        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowCreateRecord());
     }
-
-    public void settingsClicked() {
-        SecureSecretsEventBus.post(new AppNavigationEvents.EventShowSettings());
-    }
-
 }

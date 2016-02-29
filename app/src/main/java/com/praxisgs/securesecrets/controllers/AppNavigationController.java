@@ -40,6 +40,10 @@ public class AppNavigationController {
         implementer.showPreviousPage();
     }
 
+    public void onEvent(AppNavigationEvents.EventShowSettings event){
+        implementer.showSettingsPage();
+    }
+
     public void destroy() {
         SecureSecretsEventBus.unregister(this);
     }

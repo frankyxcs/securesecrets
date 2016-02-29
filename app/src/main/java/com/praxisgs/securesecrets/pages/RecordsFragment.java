@@ -38,14 +38,14 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         clickedId = getArguments().getInt(Constants.BUNDLE_ID);
-        View view = inflater.inflate(R.layout.fragment_categories_records, null);
+        View view = inflater.inflate(R.layout.fragment_categories_records_settings, null);
         bindView(view);
         setHasOptionsMenu(true);
         return view;
     }
 
     private void bindView(View view) {
-        mRecordsListview = (ListView) view.findViewById(R.id.categories_records_listview);
+        mRecordsListview = (ListView) view.findViewById(R.id.categories_records_settings_listview);
         BaseListAdapter listAdapter = new BaseListAdapter(getAppContext(), mPresenter.getRecords(clickedId));
         mRecordsListview.setAdapter(listAdapter);
         mRecordsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,7 +56,7 @@ public class RecordsFragment extends BaseFragment<RecordsPresenter> implements R
             }
         });
 
-        TextView emptyTextView = (TextView) view.findViewById(R.id.categories_records_empty_list);
+        TextView emptyTextView = (TextView) view.findViewById(R.id.categories_records_settings_empty_list);
         if(!mPresenter.getRecords(clickedId).isEmpty()){
             emptyTextView.setVisibility(View.GONE);
         }

@@ -4,12 +4,12 @@
     android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/categories_records_listview"
+        android:id="@+id/categories_records_settings_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/fab_margin"/>
 
-    <TextView android:id="@+id/categories_records_empty_list"
+    <TextView android:id="@+id/categories_records_settings_empty_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
